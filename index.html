@@ -3,15 +3,16 @@
 eval((await (await fetch("three.js")).text()).substr(0,716570))
 var{innerWidth:zw,innerHeight:zh}=window;
 var z=(_,...a)=>new _(...a),m=c=>z(Ai,{color:c}),PI=Math.PI,
-fri=n=>{let r=[];for(let i=0;i<n;i++)r.push(i);return r},fr=(n,f)=>fri(n).map(f)
+// fri=n=>{let r=[];for(let i=0;i<n;i++)r.push(i);return r},fr=(n,f)=>fri(n).map(f)
+fr=(n,f)=>{for(let i=0;i<n;i++)f(i)}
+//,fri=n=>{let r=[];fr(r.push);return r}
 zs=new $a,zc=new vt(45,zw/zh),zr=new df(),zz=0
 
 tree=_=>{
 let t=z(je),h=.9,mt=m(0xdeba87),x=z(lt,z(Ms,.01,.02,h),mt)
 x.position.y += h/2
 t.add(x)
-// TODO: fr(20).map(i=>)
-for(let i=0;i<20;i++){
+fr(20,i=>{
 let r=new je()
 r.position.y = Math.sin((i/20)*934.485)/5+.5
 r.rotateY((i/20)*PI*2)
@@ -22,7 +23,7 @@ y.rotateX(PI/-1.4+l/5)
 y.position.z += l/2.5
 r.add(y)
 t.add(r)
-}
+})
 t.position.z=-3
 zs.add(t)
 },
