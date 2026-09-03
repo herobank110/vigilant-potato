@@ -3,12 +3,14 @@
 eval((await (await fetch("three.js")).text()).substr(0,716570))
 var{innerWidth:zw,innerHeight:zh}=window;
 var z=(_,...a)=>new _(...a),m=c=>z(Ai,{color:c}),PI=Math.PI,
+fri=n=>{let r=[];for(let i=0;i<n;i++)r.push(i);return r},fr=(n,f)=>fri(n).map(f)
 zs=new $a,zc=new vt(45,zw/zh),zr=new df(),zz=0
 
 tree=_=>{
 let t=z(je),h=.9,mt=m(0xdeba87),x=z(lt,z(Ms,.01,.02,h),mt)
 x.position.y += h/2
 t.add(x)
+// TODO: fr(20).map(i=>)
 for(let i=0;i<20;i++){
 let r=new je()
 r.position.y = Math.sin((i/20)*934.485)/5+.5
@@ -37,9 +39,22 @@ let dnt=donut()
 dnt.position.set(0,.4,.25)
 zs.add(dnt)
 
+let hds=fr(4,_=>z(lt,z(Ls,0.03),m(0xff0000))),hdn=['thumb','index-finger']
+zs.add(...hds)
+
 zr.setAnimationLoop(t=>{
 let dt=t-zz;zz=t
 // zb.rotateX(.0005*dt)
 zr.render(zs, zc)
+let j=zr.xr.getHand(0).joints;
+// console.log("fuck")
+if(j){let k=j['wrist'];if(k){hds[0].position.copy(k.position)}}
+// fr(2,i=>{
+// let j=zr.xr.getHand(i).joints;
+// if(j)hdn.map((_,l)=>{let k=j[_+'-tip'];if(k){
+//     hds[i+l].position.copy(k.position)
+//     // console.log(k.position)
+// }})
+// })
 });
 })()</script>
