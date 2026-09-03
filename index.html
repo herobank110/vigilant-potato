@@ -2,9 +2,9 @@
 // eval((await (await fetch("https://play.js13kgames.com/2026/webxr/three.js")).text()).substr(0,716570))
 eval((await (await fetch("three.js")).text()).substr(0,716570))
 var{innerWidth:zw,innerHeight:zh}=window;
-var a=(_,...a)=>new _(...a),m=c=>a(Ai,{color:c}),PI=Math.PI,
-fr=(n,f)=>{let r=[];for(let i=0;i<n;i++)r.push(f(i));return r}
-zs=new $a,zc=new vt(45,zw/zh),zr=new df(),zz=0,
+var a=($,..._)=>new $(..._),m=c=>a(Ai,{color:c}),PI=Math.PI,
+fr=(n,f=_=>_)=>{let _=[];for(let i=0;i<n;i++)_.push(f(i));return _}
+zs=a($a),zc=a(vt,45,zw/zh),zr=a(df),zz=0,
 tree=_=>{let t=a(je),h=.9,mt=m(0xdeba87),x=a(lt,a(Ms,.01,.02,h),mt);x.position.y+=h/2;t.add(x);fr(20,i=>{let r=a(je);r.position.y=Math.sin((i/20)*934.485)/5+.5;r.rotateY((i/20)*PI*2);let l=(1-r.position.y)*.7,y=a(lt,a(Ms,.01,.006,l),mt);y.rotateX(PI/-1.4+l/5);y.position.z+=l/2.5;r.add(y);t.add(r)});t.position.z=-3;zs.add(t)},
 donut=_=>{let t=a(je),g=a(Ro,.1,.05),x=a(lt,g,m(0xef6eab)),y=a(lt,g,m(0xbf996d));t.add(x,y);y.position.z-=.01;return t}
 
