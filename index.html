@@ -57,16 +57,16 @@ hdn.map((_,l)=>{let k=j[_+'-tip'];if(k){
 hds[(i*2)+l].position.copy(k.position)
 }})
 
-let p=hds[i*2].position,q=hds[i*2+1].position,d=p.distanceTo(q),n=p.lerp(q,.5),
-r=d<.03
-// TODO: hold donut in this hand
-//   if holding, move it to middle dist
-//      if not pinching any more, drop it
-//   if pinching and thing in range, grab it
-// if(hld[i]){hld[i]=0}else{hld[i]=1}
+let p=hds[i*2].position,q=hds[i*2+1].position,d=p.distanceTo(q),n=p.clone().lerp(q,.5),r=d<.03
 
-// if(r){}
-fr(2,j=>hds[i*2+j].material.color.set(r?0xff0000:0x00ff00))
+// // TODO: hold donut in this hand
+// //   if holding, move it to middle dist
+// //      if not pinching any more, drop it
+// //   if pinching and thing in range, grab it
+// // if(hld[i]){hld[i]=0}else{hld[i]=1}
+
+// // if(r){}
+// fr(2,j=>hds[i*2+j].material.color.set(r?0xff0000:0x00ff00))
 
 })
 zr.render(zs, zc)
