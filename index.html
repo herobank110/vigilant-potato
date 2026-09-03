@@ -35,13 +35,14 @@ fr(2,i=>{
 let j=r.xr.getHand(i).joints;
 ['thumb','index-finger'].map((_,l)=>{let k=j[_+'-tip'];if(k)hds[(i*2)+l].position.copy(k.position)})
 
-// // TODO: hold donut in this hand
-// //   if holding, move it to middle dist
-// //      if not pinching any more, drop it
-// //   if pinching and thing in range, grab it
-// // if(hld[i]){hld[i]=0}else{hld[i]=1}
+//   if holding, move it to middle dist
+//      if not pinching any more, drop it
+//   if pinching and thing in range, grab it
 let p=hds[i*2].position,q=hds[i*2+1].position,d=p.distanceTo(q),n=p.clone().lerp(q,.5),s=d<.03
 fr(2,j=>hds[i*2+j].material.color.set(s?0xff0000:0x00ff00))
+if(!hld[i]&&s&&n.distanceTo(dnt.position)<.03)hld[i]=dnt
+else if(hld[i]&&!s)hld[i]=null
+hld[i]?.position.copy(n) // TODO: rotation?
 
 })
 r.render(zs, zc)
