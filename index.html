@@ -46,7 +46,7 @@ let dnt=donut()
 dnt.position.set(0,.4,.25)
 zs.add(dnt)
 
-let hds=fr(4,_=>z(lt,z(Ls,0.01),m(0xff0000))),hdn=['thumb','index-finger'],hld=[]
+let hds=fr(4,_=>z(lt,z(Ls,.02),m(0xff0000))),hdn=['thumb','index-finger'],hld=[]
 zs.add(...hds)
 
 zr.setAnimationLoop(t=>{
@@ -66,7 +66,7 @@ let p=hds[i*2].position,q=hds[i*2+1].position,d=p.distanceTo(q),n=p.clone().lerp
 // // if(hld[i]){hld[i]=0}else{hld[i]=1}
 
 // // if(r){}
-// fr(2,j=>hds[i*2+j].material.color.set(r?0xff0000:0x00ff00))
+fr(2,j=>hds[i*2+j].material.color.set(r?0xff0000:0x00ff00))
 
 })
 zr.render(zs, zc)
