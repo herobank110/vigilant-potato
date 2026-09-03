@@ -4,6 +4,7 @@ eval((await (await fetch("three.js")).text()).substr(0,716570))
 var{innerWidth:zw,innerHeight:zh}=window;
 var z=(_,...a)=>new _(...a),m=c=>z(Ai,{color:c}),PI=Math.PI,
 zs=new $a,zc=new vt(45,zw/zh),zr=new df(),zz=0
+
 tree=_=>{
 let t=z(je),h=.9,mt=m(0xdeba87),x=z(lt,z(Ms,.01,.02,h),mt)
 x.position.y += h/2
@@ -23,10 +24,12 @@ t.add(r)
 zs.add(t)
 },
 donut=_=>{let t=z(je),g=z(Ro,.1,.05),x=z(lt,g,m(0xef6eab)),y=z(lt,g,m(0xbf996d));t.add(x,y);y.position.z-=.01;return t}
+
 zr.setClearColor(0x79aacf)
 zr.setSize(zw,zh)
 // zs.add(zb=new lt(new Bn, new Ai({color:0xff00ff})))
 document.body.append(zr.domElement)
+navigator.xr.offerSession('immersive-vr',{requiredFeatures:["hand-tracking"],optionalFeatures:['local-floor','bounded-floor','layers']}).then(_=>zr.xr.setSession(_))
 zc.position.set(2,1,2)
 zc.lookAt(0,0,0)
 tree()
