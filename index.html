@@ -1,23 +1,23 @@
 <body style="margin:0"><script>(async () => {
 // eval((await (await fetch("https://play.js13kgames.com/2026/webxr/three.js")).text()).substr(0,716570))
 eval((await (await fetch("three.js")).text()).substr(0,716570))
-var{innerWidth:zw,innerHeight:zh}=window;
+var{innerWidth:ww,innerHeight:wh}=window;
 var a=($,..._)=>new $(..._),m=c=>a(Ai,{color:c}),PI=Math.PI,
 fr=(n,f=_=>_)=>{let _=[];for(let i=0;i<n;i++)_.push(f(i));return _}
-zs=a($a),zc=a(vt,45,zw/zh),zr=a(df),zz=0,
+zs=a($a),zc=a(vt,45,ww/wh),r=a(df),zz=0,
 tree=_=>{let t=a(je),h=.9,mt=m(0xdeba87),x=a(lt,a(Ms,.01,.02,h),mt);x.position.y+=h/2;t.add(x);fr(20,i=>{let r=a(je);r.position.y=Math.sin((i/20)*934.485)/5+.5;r.rotateY((i/20)*PI*2);let l=(1-r.position.y)*.7,y=a(lt,a(Ms,.01,.006,l),mt);y.rotateX(PI/-1.4+l/5);y.position.z+=l/2.5;r.add(y);t.add(r)});t.position.z=-3;zs.add(t)},
 donut=_=>{let t=a(je),g=a(Ro,.1,.05),x=a(lt,g,m(0xef6eab)),y=a(lt,g,m(0xbf996d));t.add(x,y);y.position.z-=.01;return t}
 
-zr.setClearColor(0x79aacf)
-zr.setSize(zw,zh)
-zr.xr.enabled = true;
+r.setClearColor(0x79aacf)
+r.setSize(ww,wh)
+r.xr.enabled = true;
 // zs.add(zb=new lt(new Bn, new Ai({color:0xff00ff})))
-document.body.append(zr.domElement)
+document.body.append(r.domElement)
 
 // TODO: remove in prod, only offer (works on quest browser)
-// navigator.xr.offerSession('immersive-vr',{requiredFeatures:["hand-tracking",'local-floor']}).then(_=>zr.xr.setSession(_))
-// window.onclick=_=>navigator.xr.requestSession('immersive-vr',{requiredFeatures:["hand-tracking"],['local-floor','bounded-floor','layers']}).then(_=>zr.xr.setSession(_))
-window.onclick=_=>navigator.xr.requestSession('immersive-vr',{requiredFeatures:["hand-tracking",'local-floor']}).then(_=>zr.xr.setSession(_))
+// navigator.xr.offerSession('immersive-vr',{requiredFeatures:["hand-tracking",'local-floor']}).then(_=>r.xr.setSession(_))
+// window.onclick=_=>navigator.xr.requestSession('immersive-vr',{requiredFeatures:["hand-tracking"],['local-floor','bounded-floor','layers']}).then(_=>r.xr.setSession(_))
+window.onclick=_=>navigator.xr.requestSession('immersive-vr',{requiredFeatures:["hand-tracking",'local-floor']}).then(_=>r.xr.setSession(_))
 
 zc.position.set(2,1,2)
 zc.lookAt(0,0,0)
@@ -29,15 +29,15 @@ zs.add(dnt)
 let hds=fr(4,_=>a(lt,a(Ls,.02),m(0))),hdn=['thumb','index-finger'],hld=[]
 zs.add(...hds)
 
-zr.setAnimationLoop(t=>{
+r.setAnimationLoop(t=>{
 let dt=t-zz;zz=t
 fr(2,i=>{
-let j=zr.xr.getHand(i).joints;
+let j=r.xr.getHand(i).joints;
 hdn.map((_,l)=>{let k=j[_+'-tip'];if(k){
 hds[(i*2)+l].position.copy(k.position)
 }})
 
-let p=hds[i*2].position,q=hds[i*2+1].position,d=p.distanceTo(q),n=p.clone().lerp(q,.5),r=d<.03
+let p=hds[i*2].position,q=hds[i*2+1].position,d=p.distanceTo(q),n=p.clone().lerp(q,.5),s=d<.03
 
 // // TODO: hold donut in this hand
 // //   if holding, move it to middle dist
@@ -46,9 +46,9 @@ let p=hds[i*2].position,q=hds[i*2+1].position,d=p.distanceTo(q),n=p.clone().lerp
 // // if(hld[i]){hld[i]=0}else{hld[i]=1}
 
 // // if(r){}
-fr(2,j=>hds[i*2+j].material.color.set(r?0xff0000:0x00ff00))
+fr(2,j=>hds[i*2+j].material.color.set(s?0xff0000:0x00ff00))
 
 })
-zr.render(zs, zc)
+r.render(zs, zc)
 });
 })()</script>
