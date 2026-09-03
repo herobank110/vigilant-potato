@@ -23,6 +23,7 @@ y.position.z += l/2.5
 r.add(y)
 t.add(r)
 }
+t.position.z=-3
 zs.add(t)
 },
 donut=_=>{let t=z(je),g=z(Ro,.1,.05),x=z(lt,g,m(0xef6eab)),y=z(lt,g,m(0xbf996d));t.add(x,y);y.position.z-=.01;return t}
@@ -40,24 +41,21 @@ let dnt=donut()
 dnt.position.set(0,.4,.25)
 zs.add(dnt)
 
-let hds=fr(4,_=>z(lt,z(Ls,0.03),m(0xff0000))),hdn=['thumb','index-finger']
+let hds=fr(4,_=>z(lt,z(Ls,0.01),m(0xff0000))),hdn=['thumb','index-finger']
 zs.add(...hds)
 
 zr.setAnimationLoop(t=>{
 let dt=t-zz;zz=t
 // zb.rotateX(.0005*dt)
+fr(2,i=>{
+let j=zr.xr.getHand(i).joints;
+hdn.map((_,l)=>{let k=j[_+'-tip'];if(k){
+hds[(i*2)+l].position.copy(k.position)
+}})
+
+// else{console.log("fuck3")}
+})
+
 zr.render(zs, zc)
-let j=zr.xr.getHand(0).joints;
-// console.log("fuck")
-if(j){let k=j['wrist'];if(k){hds[0].position.copy(k.position)}}
-if(zc.position.x != 2)
-console.log(zc.position)
-// fr(2,i=>{
-// let j=zr.xr.getHand(i).joints;
-// if(j)hdn.map((_,l)=>{let k=j[_+'-tip'];if(k){
-//     hds[i+l].position.copy(k.position)
-//     // console.log(k.position)
-// }})
-// })
 });
 })()</script>
