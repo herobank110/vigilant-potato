@@ -33,7 +33,12 @@ zr.setSize(zw,zh)
 zr.xr.enabled = true;
 // zs.add(zb=new lt(new Bn, new Ai({color:0xff00ff})))
 document.body.append(zr.domElement)
-navigator.xr.offerSession('immersive-vr',{requiredFeatures:["hand-tracking"],optionalFeatures:['local-floor','bounded-floor','layers']}).then(_=>zr.xr.setSession(_))
+
+// TODO: remove in prod, only offer (works on quest browser)
+// navigator.xr.offerSession('immersive-vr',{requiredFeatures:["hand-tracking"],optionalFeatures:['local-floor','bounded-floor','layers']}).then(_=>zr.xr.setSession(_))
+// window.onclick=_=>navigator.xr.requestSession('immersive-vr',{requiredFeatures:["hand-tracking"],['local-floor','bounded-floor','layers']}).then(_=>zr.xr.setSession(_))
+window.onclick=_=>navigator.xr.requestSession('immersive-vr',{requiredFeatures:["hand-tracking",'local-floor'],optionalFeatures:[]}).then(_=>zr.xr.setSession(_))
+
 zc.position.set(2,1,2)
 zc.lookAt(0,0,0)
 tree()
