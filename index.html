@@ -1,3 +1,16 @@
-<script>
-console.log("hi");  
-</script>
+<body style="margin:0"><script>(async () => {
+eval((await (await fetch("https://play.js13kgames.com/2026/webxr/three.js")).text()).substring(0, 716570))
+var{innerWidth:zw,innerHeight:zh}=window,
+zs=new $a,zc=new vt(45,zw/zh),zr=new df(),zz=0
+zr.setClearColor(0x79aacf)
+zr.setSize(zw,zh);
+zs.add(zb=new lt(new Bn, new Ai({color:0xff00ff})))
+document.body.append(zr.domElement);
+zc.position.set(7, 5, 7);
+zc.lookAt(0, 0, 0);
+zr.setAnimationLoop(t=>{
+let dt=t-zz;zz=t
+zb.rotateX(.0005*dt)
+zr.render(zs, zc);
+});
+})()</script>
