@@ -1,7 +1,9 @@
 <body style="margin:0"><script>(async () => {
 // eval((await (await fetch("https://play.js13kgames.com/2026/webxr/three.js")).text()).substr(0,716570))
 eval((await (await fetch("three.js")).text()).substr(0,716570))
-let z=(_,...a)=>new _(...a),m=c=>z(Ai,{color:c})
+var{innerWidth:zw,innerHeight:zh}=window;
+var z=(_,...a)=>new _(...a),m=c=>z(Ai,{color:c}),PI=Math.PI,
+zs=new $a,zc=new vt(45,zw/zh),zr=new df(),zz=0
 tree=_=>{
 let t=z(je),h=.9,mt=m(0xdeba87),x=z(lt,z(Ms,.01,.02,h),mt)
 x.position.y += h/2
@@ -9,32 +11,29 @@ t.add(x)
 for(let i=0;i<20;i++){
 let r=new je()
 r.position.y = Math.sin((i/20)*934.485)/5+.5
-r.rotateY((i/20)*Math.PI*2)
+r.rotateY((i/20)*PI*2)
 const l = (1 - r.position.y)*.7
 const g = new Ms(.01,.006, l)
 const y = new lt(g, mt)
-y.rotateX(Math.PI/-1.4+l/5)
+y.rotateX(PI/-1.4+l/5)
 y.position.z += l/2.5
 r.add(y)
 t.add(r)
 }
 zs.add(t)
 },
-donut=_=>{
-var g=new Ro(.1,.05),n=m(0xef6eab),o=m(0xbf996d),x=new lt(g,n),y=new lt(g,o)
-zs.add(x)
-y.position.z-=.01
-zs.add(y)
-}
-var{innerWidth:zw,innerHeight:zh}=window,
-zs=new $a,zc=new vt(45,zw/zh),zr=new df(),zz=0
+donut=_=>{let t=z(je),g=z(Ro,.1,.05),x=z(lt,g,m(0xef6eab)),y=z(lt,g,m(0xbf996d));t.add(x,y);y.position.z-=.01;return t}
 zr.setClearColor(0x79aacf)
 zr.setSize(zw,zh)
 // zs.add(zb=new lt(new Bn, new Ai({color:0xff00ff})))
 document.body.append(zr.domElement)
-zc.position.set(7, 5, 7)
-zc.lookAt(0, 0, 0)
+zc.position.set(2,1,2)
+zc.lookAt(0,0,0)
 tree()
+let dnt=donut()
+dnt.position.set(0,.4,.25)
+zs.add(dnt)
+
 zr.setAnimationLoop(t=>{
 let dt=t-zz;zz=t
 // zb.rotateX(.0005*dt)
