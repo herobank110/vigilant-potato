@@ -29,6 +29,7 @@ donut=_=>{let t=z(je),g=z(Ro,.1,.05),x=z(lt,g,m(0xef6eab)),y=z(lt,g,m(0xbf996d))
 
 zr.setClearColor(0x79aacf)
 zr.setSize(zw,zh)
+zr.xr.enabled = true;
 // zs.add(zb=new lt(new Bn, new Ai({color:0xff00ff})))
 document.body.append(zr.domElement)
 navigator.xr.offerSession('immersive-vr',{requiredFeatures:["hand-tracking"],optionalFeatures:['local-floor','bounded-floor','layers']}).then(_=>zr.xr.setSession(_))
@@ -49,6 +50,8 @@ zr.render(zs, zc)
 let j=zr.xr.getHand(0).joints;
 // console.log("fuck")
 if(j){let k=j['wrist'];if(k){hds[0].position.copy(k.position)}}
+if(zc.position.x != 2)
+console.log(zc.position)
 // fr(2,i=>{
 // let j=zr.xr.getHand(i).joints;
 // if(j)hdn.map((_,l)=>{let k=j[_+'-tip'];if(k){
