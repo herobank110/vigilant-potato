@@ -62,8 +62,9 @@ hld[i]?.position.copy(n).addScalar(-.02) // TODO: rotation?
 })
 
 // if dnt and shk held, pour sprinkles
-// if(hld[0]&&hld[1]&&dnt.position.distanceTo(shk.position)<0.2&&shk.position.y>dnt.position.y) {
-if(hld[0]&&hld[1]) {
+let a=dnt.position.clone()//;a.y=shk.y  // for some reason not working
+if(hld[0]&&hld[1]&&shk.position.y>dnt.position.y&&a.distanceTo(shk.position)<0.1) {
+// if(hld[0]&&hld[1]) {
 // let z=dnt.children[2];z.count=Math.min(1e3,z.count+dt*0.08)
 // console.log("fufkasdas",dnt.children[2].count)
 dnt.children[2].frustumCulled=false  // TODO: move to constructor
