@@ -26,7 +26,7 @@ zs=a($a),zc=a(vt,45,ww/wh),r=a(df),zz=0,
 d=a(Uint8Array,await(await fetch("d")).arrayBuffer()),
 tree=_=>{let t=a(je),h=.9,mt=m(0xdeba87),x=a(lt,a(Ms,.01,.02,h),mt);x.position.y+=h/2;t.add(x);fr(20,i=>{let r=a(je);r.position.y=Math.sin((i/20)*934.485)/5+.5;r.rotateY((i/20)*PI*2);let l=(1-r.position.y)*.7,y=a(lt,a(Ms,.01,.006,l),mt);y.rotateX(PI/-1.4+l/5);y.position.z+=l/2.5;r.add(y);t.add(r)});return t},
 // donut=_=>{let t=a(je),g=a(Ro,.03,.015),x=a(lt,g,m(0xef6eab)),y=a(lt,g,m(0xbf996d));t.add(x,y);y.position.z-=.01;return t},
-donut=_=>{let t=a(je),g=a(Ro,.03,.015),x=a(lt,g,m(0xef6eab)),y=a(lt,g,m(0xbf996d));let n=1000,d=a(je),c=a(de),z=a(no,a(Ms,.00056,.00056,.0061,5),a(Ai),n);fr(n,i=>{let j=i*9345.934,y=i*3484.984,q=Math.sin(j)*.5+.5,r=.02+(q*.02);d.position.set(r*Math.cos(y),r*Math.sin(y),.011+(.0056*Math.sin(Math.PI*q)));d.rotateZ(j);d.updateMatrix();z.setMatrixAt(i, d.matrix);c.set([0xffde39,0x0884c0,0xdf1482,0xff9b32,0x1c894c][Math.floor((j%390.382)%5)]);z.setColorAt(i,c)});y.position.z-=.001;t.add(x,y,z);return t},
+donut=_=>{let t=a(je),g=a(Ro,.03,.015),x=a(lt,g,m(0xef6eab)),y=a(lt,g,m(0xbf996d));let n=1000,d=a(je),c=a(de),z=a(no,a(Ms,.00056,.00056,.0061,5),a(Ai),n);fr(n,i=>{let j=i*9345.934,y=i*3484.984,q=Math.sin(j)*.5+.5,r=.02+(q*.02);d.position.set(r*Math.cos(y),r*Math.sin(y),.011+(.0056*Math.sin(Math.PI*q)));d.rotateZ(j);d.updateMatrix();z.setMatrixAt(i, d.matrix);c.set([0xffde39,0x0884c0,0xdf1482,0xff9b32,0x1c894c][Math.floor((j%390.382)%5)]);z.setColorAt(i,c)});y.position.z-=.001;t.add(x,y,z);z.count=0;return t},
 shaker=_=>{let t=a(je),x=a(lt,a(Ms,.017,.02,.066),a(Ai,{ color: 0xdddddd }));t.add(x);return t}
 
 dd=_=>{let i=0,j=1,f;setInterval(_=>{j--;while(!j){f=440*2**((d[i*2+1]-69)/12);zzfx(...[0.8*(1/Math.pow(10,Math.max(0,(f-1000)/3000))),0,f,.02,.12,.38,1,1.5,,,,,,,,,,.96,.02,,-1417]);i=(i+1)%(d.length/2);j=d[i*2]}},1000/69)}
@@ -45,6 +45,7 @@ zs.add(...hds)
 
 r.setAnimationLoop(t=>{
 let dt=t-zz;zz=t
+
 fr(2,i=>{
 let j=r.xr.getHand(i).joints;
 ['thumb','index-finger'].map((_,l)=>{let k=j[_+'-tip'];if(k)hds[(i*2)+l].position.copy(k.position)})
@@ -58,17 +59,32 @@ fr(2,j=>hds[i*2+j].material.color.set(s?0xff0000:0x00ff00))
 hlp.map((p,j)=>{if(!hld[i]&&s&&n.distanceTo(p.position)<.13){hld[i]=p;p.rotation.x=(-PI/2*(j+1))}})
 if(hld[i]&&!s){hld[i]===shk&&(shk.rotation.x=0);hld[i]=null}
 hld[i]?.position.copy(n).addScalar(-.02) // TODO: rotation?
-
 })
 
+// if dnt and shk held, pour sprinkles
+// if(hld[0]&&hld[1]&&dnt.position.distanceTo(shk.position)<0.2&&shk.position.y>dnt.position.y) {
+if(hld[0]&&hld[1]) {
+// let z=dnt.children[2];z.count=Math.min(1e3,z.count+dt*0.08)
+// console.log("fufkasdas",dnt.children[2].count)
+dnt.children[2].frustumCulled=false  // TODO: move to constructor
+dnt.children[2].count+=dt*0.08
+// dnt.children[2].count=dnt.children[2].count+3
+// dnt.children[2].count
+// dnt.children[2].count = 1000
+// dnt.children[2].count = 1000
+}
+//  else {
+// dnt.children[2].count = 100
+// dnt.children[2].count = 100
+// }
 
-// dnt.children[2].count=(t/3%1e3)
+// dnt.children[2].count+=dt*0.08
 
 r.render(zs, zc)
 });
 
 // TODO: Remove in prod
 window.onkeydown=_=>r.xr.getSession()?.end()
-dnt.position.set(0,0,-1)  
-r.setSize(ww,wh);document.body.append(r.domElement)
+// dnt.position.set(0,0,-1)  
+// r.setSize(ww,wh);document.body.append(r.domElement)
 })()</script><a>Click to start</a>
