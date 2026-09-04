@@ -8,19 +8,15 @@ zs=a($a),zc=a(vt,45,ww/wh),r=a(df),zz=0,
 tree=_=>{let t=a(je),h=.9,mt=m(0xdeba87),x=a(lt,a(Ms,.01,.02,h),mt);x.position.y+=h/2;t.add(x);fr(20,i=>{let r=a(je);r.position.y=Math.sin((i/20)*934.485)/5+.5;r.rotateY((i/20)*PI*2);let l=(1-r.position.y)*.7,y=a(lt,a(Ms,.01,.006,l),mt);y.rotateX(PI/-1.4+l/5);y.position.z+=l/2.5;r.add(y);t.add(r)});t.position.z=-3;zs.add(t)},
 donut=_=>{let t=a(je),g=a(Ro,.1,.05),x=a(lt,g,m(0xef6eab)),y=a(lt,g,m(0xbf996d));t.add(x,y);y.position.z-=.01;return t}
 
-r.setClearColor(0x79aacf)
-r.setSize(ww,wh)
-r.xr.enabled = true;
+r.setClearColor(0x79aacf);r.setSize(ww,wh);r.xr.enabled = true;document.body.append(r.domElement)
+// zc.position.set(2,1,2);zc.lookAt(0,0,0)
 // zs.add(zb=new lt(new Bn, new Ai({color:0xff00ff})))
-document.body.append(r.domElement)
 
 // TODO: remove in prod, only offer (works on quest browser)
 // navigator.xr.offerSession('immersive-vr',{requiredFeatures:["hand-tracking",'local-floor']}).then(_=>r.xr.setSession(_))
 // window.onclick=_=>navigator.xr.requestSession('immersive-vr',{requiredFeatures:["hand-tracking"],['local-floor','bounded-floor','layers']}).then(_=>r.xr.setSession(_))
 window.onclick=_=>navigator.xr.requestSession('immersive-vr',{requiredFeatures:["hand-tracking",'local-floor']}).then(_=>r.xr.setSession(_))
 
-zc.position.set(2,1,2)
-zc.lookAt(0,0,0)
 tree()
 let dnt=donut()
 dnt.position.set(0,.4,.25)
