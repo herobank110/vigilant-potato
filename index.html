@@ -31,10 +31,12 @@ r.setClearColor(0x79aacf);r.xr.enabled=true
 // r.setSize(ww,wh);document.body.append(r.domElement)
 window.onclick=_=>{dd();navigator.xr.requestSession('immersive-vr',{requiredFeatures:["hand-tracking",'local-floor']}).then(_=>r.xr.setSession(_))}
 
-let tre=tree(),dnt=donut()
-tre.position.z=-3;
-dnt.position.set(0,.4,.25)
-zs.add(tre,dnt)
+let dk=a(je),tre=tree(),dnt=donut()
+tre.position.set(.5,0,-.6);
+dnt.position.set(.3,.4,.25-.9)
+dk.add(tre,dnt)
+dk.position.y=.6
+zs.add(dk)
 
 let hds=fr(4,_=>a(lt,a(Ls,.02),m(0))),hld=[]
 zs.add(...hds)
