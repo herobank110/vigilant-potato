@@ -28,12 +28,17 @@ tree=_=>{let t=a(je),h=.9,mt=m(0xdeba87),x=a(lt,a(Ms,.01,.02,h),mt);x.position.y
 donut=_=>{let t=a(je),g=a(Ro,.1,.05),x=a(lt,g,m(0xef6eab)),y=a(lt,g,m(0xbf996d));t.add(x,y);y.position.z-=.01;return t},
 dd=_=>{let i=284,j=1,f;setInterval(_=>{j--;while(!j){f=440*2**((d[i*2+1]-69)/12);zzfx(...[0.8*(1/Math.pow(10,Math.max(0,(f-1000)/3000))),0,f,.02,.12,.38,1,1.5,,,,,,,,,,.96,.02,,-1417]);i=(i+1)%(d.length/2);j=d[i*2]}},1000/69)}
 
-r.setClearColor(0x79aacf);r.setSize(ww,wh);r.xr.enabled = true;document.body.append(r.domElement)
+// r.setClearColor(0x79aacf);r.setSize(ww,wh);r.xr.enabled = true;document.body.append(r.domElement)
+r.setClearColor(0x79aacf);r.xr.enabled = true
 // zc.position.set(2,1,2);zc.lookAt(0,0,0)
 // zs.add(zb=new lt(new Bn, new Ai({color:0xff00ff})))
 
 // TODO: remove in prod, only offer (works on quest browser)
-// navigator.xr.offerSession('immersive-vr',{requiredFeatures:["hand-tracking",'local-floor']}).then(_=>r.xr.setSession(_))
+// dd();
+// navigator.xr.offerSession('immersive-vr',{requiredFeatures:["hand-tracking",'local-floor']}).then(_=>{
+//     // _.onvisibilitychange=_=>{dd();console.log("test2",_)}
+//     r.xr.setSession(_)
+// })
 // window.onclick=_=>navigator.xr.requestSession('immersive-vr',{requiredFeatures:["hand-tracking"],['local-floor','bounded-floor','layers']}).then(_=>r.xr.setSession(_))
 window.onclick=_=>{dd();navigator.xr.requestSession('immersive-vr',{requiredFeatures:["hand-tracking",'local-floor']}).then(_=>r.xr.setSession(_))}
 
