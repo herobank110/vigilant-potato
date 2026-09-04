@@ -32,11 +32,11 @@ r.setClearColor(0x79aacf);r.xr.enabled=true
 window.onclick=_=>{dd();navigator.xr.requestSession('immersive-vr',{requiredFeatures:["hand-tracking",'local-floor']}).then(_=>r.xr.setSession(_))}
 
 let dk=a(je),tre=tree(),dnt=donut()
-tre.position.set(.5,0,-.6);
-dnt.position.set(.5,.52,-.36)
-dk.add(tre,dnt)
-dk.position.y=.6
-zs.add(dk)
+tre.position.set(.5,.6,-.6);
+dnt.position.set(.5,1.12,-.36)
+// dk.add(tre,dnt)
+// dk.position.y=.6
+zs.add(tre,dnt)
 
 let hds=fr(4,_=>a(lt,a(Ls,.02),m(0))),hld=[]
 zs.add(...hds)
@@ -50,13 +50,17 @@ let j=r.xr.getHand(i).joints;
 //   if holding, move it to middle dist
 //      if not pinching any more, drop it
 //   if pinching and thing in range, grab it
-let p=hds[i*2].position,q=hds[i*2+1].position,d=p.distanceTo(q),n=p.clone().lerp(q,.5),s=d<.03
+let p=hds[i*2].position,q=hds[i*2+1].position,d=p.distanceTo(q),n=p.clone().lerp(q,.5),s=d<.017
 fr(2,j=>hds[i*2+j].material.color.set(s?0xff0000:0x00ff00))
-if(!hld[i]&&s&&n.distanceTo(dnt.position)<.03)hld[i]=dnt
+// dnt.
+// console.log(n.distanceTo(dnt.position))
+if(!hld[i]&&s&&n.distanceTo(dnt.position)<.13)hld[i]=dnt
 else if(hld[i]&&!s)hld[i]=null
 hld[i]?.position.copy(n) // TODO: rotation?
 
 })
 r.render(zs, zc)
 });
+// TODO: Remove in prod
+window.onkeydown=_=>r.xr.getSession()?.end()
 })()</script><a>Click to start</a>
