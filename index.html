@@ -38,10 +38,6 @@ tre.position.set(.5,.8,-.6);
 dnt.position.set(.5,1.32,-.36)
 shk.position.set(-.3,.8,-.3)
 
-// TODO: REMOVE IN PROD
-dnt.position.set(0,0,-1)  
-r.setSize(ww,wh);document.body.append(r.domElement)
-
 zs.add(tre,dnt,shk)
 
 let hds=fr(4,_=>a(lt,a(Ls,.02),m(0))),hld=[],hlp=[dnt,shk]
@@ -58,25 +54,21 @@ let j=r.xr.getHand(i).joints;
 //   if pinching and thing in range, grab it
 let p=hds[i*2].position,q=hds[i*2+1].position,d=p.distanceTo(q),n=p.clone().lerp(q,.5),s=d<.024
 fr(2,j=>hds[i*2+j].material.color.set(s?0xff0000:0x00ff00))
-// dnt.
-// console.log(n.distanceTo(dnt.position))
 
-hlp.map((p,j)=>{
-if(!hld[i]&&s&&n.distanceTo(p.position)<.13){hld[i]=p;p.rotation.x=(-PI/2*(j+1))}
-// else if(hld[i]&&!s){hld[i]=null;j==1&&(hld[i].rotation.x=0, console.log("fuck"))}
-// else if(hld[i]&&!s){hld[i]=null;if(j==1){hld[i].rotation.x=0;console.log("fuck")}}
-})
+hlp.map((p,j)=>{if(!hld[i]&&s&&n.distanceTo(p.position)<.13){hld[i]=p;p.rotation.x=(-PI/2*(j+1))}})
 if(hld[i]&&!s){hld[i]===shk&&(shk.rotation.x=0);hld[i]=null}
-// if(hld[i]&&!s){console.log("fuck",j)}
 hld[i]?.position.copy(n).addScalar(-.02) // TODO: rotation?
 
 })
 
 
-dnt.children[2].count=(t/3%1e3)
+// dnt.children[2].count=(t/3%1e3)
 
 r.render(zs, zc)
 });
+
 // TODO: Remove in prod
 window.onkeydown=_=>r.xr.getSession()?.end()
+dnt.position.set(0,0,-1)  
+r.setSize(ww,wh);document.body.append(r.domElement)
 })()</script><a>Click to start</a>
