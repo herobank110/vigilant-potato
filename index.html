@@ -1,4 +1,4 @@
-<body style="margin:0"><script>(async () => {
+<body style="margin:0;display:grid;place-items:center"><script>(async () => {
 // eval((await (await fetch("https://play.js13kgames.com/2026/webxr/three.js")).text()).substr(0,716570))
 eval((await (await fetch("three.js")).text()).substr(0,716570))
 
@@ -27,9 +27,7 @@ d=a(Uint8Array,await(await fetch("d")).arrayBuffer()),
 tree=_=>{let t=a(je),h=.9,mt=m(0xdeba87),x=a(lt,a(Ms,.01,.02,h),mt);x.position.y+=h/2;t.add(x);fr(20,i=>{let r=a(je);r.position.y=Math.sin((i/20)*934.485)/5+.5;r.rotateY((i/20)*PI*2);let l=(1-r.position.y)*.7,y=a(lt,a(Ms,.01,.006,l),mt);y.rotateX(PI/-1.4+l/5);y.position.z+=l/2.5;r.add(y);t.add(r)});t.position.z=-3;zs.add(t)},
 donut=_=>{let t=a(je),g=a(Ro,.1,.05),x=a(lt,g,m(0xef6eab)),y=a(lt,g,m(0xbf996d));t.add(x,y);y.position.z-=.01;return t},
 dd=_=>{let i=284,j=1,f;setInterval(_=>{j--;while(!j){f=440*2**((d[i*2+1]-69)/12);zzfx(...[0.8*(1/Math.pow(10,Math.max(0,(f-1000)/3000))),0,f,.02,.12,.38,1,1.5,,,,,,,,,,.96,.02,,-1417]);i=(i+1)%(d.length/2);j=d[i*2]}},1000/69)}
-
-// r.setClearColor(0x79aacf);r.setSize(ww,wh);r.xr.enabled = true;document.body.append(r.domElement)
-r.setClearColor(0x79aacf);r.xr.enabled = true
+r.setClearColor(0x79aacf);r.xr.enabled=true
 // zc.position.set(2,1,2);zc.lookAt(0,0,0)
 // zs.add(zb=new lt(new Bn, new Ai({color:0xff00ff})))
 
@@ -68,4 +66,4 @@ hld[i]?.position.copy(n) // TODO: rotation?
 })
 r.render(zs, zc)
 });
-})()</script>
+})()</script><a>Click to start</a>
