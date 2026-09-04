@@ -58,7 +58,7 @@ fr(2,j=>hds[i*2+j].material.color.set(s?0xff0000:0x00ff00))
 // console.log(n.distanceTo(dnt.position))
 if(!hld[i]&&s&&n.distanceTo(dnt.position)<.13){hld[i]=dnt;dnt.rotation.x=-PI/2}
 else if(hld[i]&&!s)hld[i]=null
-hld[i]?.position.copy(n) // TODO: rotation?
+hld[i]?.position.copy(n).addScalar(-.02) // TODO: rotation?
 
 })
 r.render(zs, zc)
