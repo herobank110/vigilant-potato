@@ -62,7 +62,7 @@ if(!hld[i]&&s&&n.distanceTo(p.position)<.13){hld[i]=p;p.rotation.x=(-PI/2*(j+1))
 // else if(hld[i]&&!s){hld[i]=null;j==1&&(hld[i].rotation.x=0, console.log("fuck"))}
 // else if(hld[i]&&!s){hld[i]=null;if(j==1){hld[i].rotation.x=0;console.log("fuck")}}
 })
-if(hld[i]&&!s){hld[i]==shk&&(shk.rotation.x=0);hld[i]=null}
+if(hld[i]&&!s){hld[i]===shk&&(shk.rotation.x=0);hld[i]=null}
 // if(hld[i]&&!s){console.log("fuck",j)}
 hld[i]?.position.copy(n).addScalar(-.02) // TODO: rotation?
 
