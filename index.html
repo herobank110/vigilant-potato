@@ -1,12 +1,32 @@
 <body style="margin:0"><script>(async () => {
 // eval((await (await fetch("https://play.js13kgames.com/2026/webxr/three.js")).text()).substr(0,716570))
 eval((await (await fetch("three.js")).text()).substr(0,716570))
+
+let // ZzFXMicro - Zuper Zmall Zound Zynth - v1.3.2 by Frank Force
+zzfxV=.3,               // volume
+zzfxX=new AudioContext, // audio context
+zzfx=                   // play sound
+(p=1,k=.05,b=220,e=0,r=0,t=.1,q=0,D=1,u=0,y=0,v=0,z=0,l=0,E=0,A=0,F=0,c=0,w=1,m=0,B=0
+,N=0)=>{let M=Math,d=2*M.PI,R=44100,G=u*=500*d/R/R,C=b*=(1-k+2*k*M.random(k=[]))*d/R,
+g=0,H=0,a=0,n=1,I=0,J=0,f=0,h=N<0?-1:1,x=d*h*N*2/R,L=M.cos(x),Z=M.sin,K=Z(x)/4,O=1+K,
+X=-2*L/O,Y=(1-K)/O,P=(1+h*L)/2/O,Q=-(h+L)/O,S=P,T=0,U=0,V=0,W=0;e=R*e+9;m*=R;r*=R;t*=
+R;c*=R;y*=500*d/R**3;A*=d/R;v*=d/R;z*=R;l=R*l|0;p*=zzfxV;for(h=e+m+r+t+c|0;a<h;k[a++]
+=f*p)++J%(100*F|0)||(f=q?1<q?2<q?3<q?4<q?(g/d%1<D/2)*2-1:Z(g**3):M.max(M.min(M.tan(g)
+,1),-1):1-(2*g/d%2+2)%2:1-4*M.abs(M.round(g/d)-g/d):Z(g),f=(l?1-B+B*Z(d*a/l):1)*(4<q?
+f:(f<0?-1:1)*M.abs(f)**D)*(a<e?a/e:a<e+m?1-(a-e)/m*(1-w):a<e+m+r?w:a<h-c?(h-a-c)/t*w:
+0),f=c?f/2+(c>a?0:(a<h-c?1:(h-a)/c)*k[a-c|0]/2/p):f,N?f=W=S*T+Q*(T=U)+P*(U=f)-Y*V-X*(
+V=W):0),x=(b+=u+=y)*M.cos(A*H++),g+=x+x*E*Z(a**5),n&&++n>z&&(b+=v,C+=v,n=0),!l||++I%l
+||(b=C,u=G,n=n||1);X=zzfxX,p=X.createBuffer(1,h,R);p.getChannelData(0).set(k);b=X.
+createBufferSource();b.buffer=p;b.connect(X.destination);b.start()}
+
 var{innerWidth:ww,innerHeight:wh}=window,
 a=($,..._)=>new $(..._),m=c=>a(Ai,{color:c}),PI=Math.PI,
 fr=(n,f=_=>_)=>{let _=[];for(let i=0;i<n;i++)_.push(f(i));return _}
 zs=a($a),zc=a(vt,45,ww/wh),r=a(df),zz=0,
+d=a(Uint8Array,await(await fetch("d")).arrayBuffer()),
 tree=_=>{let t=a(je),h=.9,mt=m(0xdeba87),x=a(lt,a(Ms,.01,.02,h),mt);x.position.y+=h/2;t.add(x);fr(20,i=>{let r=a(je);r.position.y=Math.sin((i/20)*934.485)/5+.5;r.rotateY((i/20)*PI*2);let l=(1-r.position.y)*.7,y=a(lt,a(Ms,.01,.006,l),mt);y.rotateX(PI/-1.4+l/5);y.position.z+=l/2.5;r.add(y);t.add(r)});t.position.z=-3;zs.add(t)},
-donut=_=>{let t=a(je),g=a(Ro,.1,.05),x=a(lt,g,m(0xef6eab)),y=a(lt,g,m(0xbf996d));t.add(x,y);y.position.z-=.01;return t}
+donut=_=>{let t=a(je),g=a(Ro,.1,.05),x=a(lt,g,m(0xef6eab)),y=a(lt,g,m(0xbf996d));t.add(x,y);y.position.z-=.01;return t},
+dd=_=>{let i=284,j=1,f;setInterval(_=>{j--;while(!j){f=440*2**((d[i*2+1]-69)/12);zzfx(...[0.8*(1/Math.pow(10,Math.max(0,(f-1000)/3000))),0,f,.02,.12,.38,1,1.5,,,,,,,,,,.96,.02,,-1417]);i=(i+1)%(d.length/2);j=d[i*2]}},1000/69)}
 
 r.setClearColor(0x79aacf);r.setSize(ww,wh);r.xr.enabled = true;document.body.append(r.domElement)
 // zc.position.set(2,1,2);zc.lookAt(0,0,0)
@@ -15,7 +35,7 @@ r.setClearColor(0x79aacf);r.setSize(ww,wh);r.xr.enabled = true;document.body.app
 // TODO: remove in prod, only offer (works on quest browser)
 // navigator.xr.offerSession('immersive-vr',{requiredFeatures:["hand-tracking",'local-floor']}).then(_=>r.xr.setSession(_))
 // window.onclick=_=>navigator.xr.requestSession('immersive-vr',{requiredFeatures:["hand-tracking"],['local-floor','bounded-floor','layers']}).then(_=>r.xr.setSession(_))
-window.onclick=_=>navigator.xr.requestSession('immersive-vr',{requiredFeatures:["hand-tracking",'local-floor']}).then(_=>r.xr.setSession(_))
+window.onclick=_=>{dd();navigator.xr.requestSession('immersive-vr',{requiredFeatures:["hand-tracking",'local-floor']}).then(_=>r.xr.setSession(_))}
 
 tree()
 let dnt=donut()
