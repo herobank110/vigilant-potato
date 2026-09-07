@@ -1,6 +1,6 @@
 <body style="display:grid;place-items:center"><script>(async () => {
-eval((await (await fetch("https://play.js13kgames.com/2026/webxr/three.js")).text()).substr(0,716570))
-// eval((await (await fetch("three.js")).text()).substr(0,716570))
+// eval((await (await fetch("https://play.js13kgames.com/2026/webxr/three.js")).text()).substr(0,716570))
+eval((await (await fetch("three.js")).text()).substr(0,716570))
 
 let // ZzFXMicro - Zuper Zmall Zound Zynth - v1.3.2 by Frank Force
 zzfxV=.3,               // volume
@@ -29,7 +29,7 @@ tree=_=>{let t=a(je),h=.9,mt=m(0xdeba87),x=a(lt,a(Ms,.01,.02,h),mt);x.position.y
 donut=_=>{let t=a(je),g=a(Ro,.03,.015),x=a(lt,g,m(0xef6eab)),y=a(lt,g,m(0xbf996d));let n=1000,d=a(je),c=a(de),z=a(no,a(Ms,.00056,.00056,.0061,5),a(Ai),n);fr(n,i=>{let j=i*9345.934,y=i*3484.984,q=Math.sin(j)*.5+.5,r=.02+(q*.02);d.position.set(r*Math.cos(y),r*Math.sin(y),.011+(.0056*Math.sin(Math.PI*q)));d.rotateZ(j);d.updateMatrix();z.setMatrixAt(i, d.matrix);c.set([0xffde39,0x0884c0,0xdf1482,0xff9b32,0x1c894c][Math.floor((j%390.382)%5)]);z.setColorAt(i,c)});y.position.z-=.001;t.add(x,y,z);z.count=0;return t},
 shaker=_=>{let t=a(je),x=a(lt,a(Ms,.017,.02,.066),a(Ai,{ color: 0xdddddd }));t.add(x);return t}
 
-dd=_=>{let i=0,j=1,f;setInterval(_=>{j--;while(!j){f=440*2**((d[i*2+1]-69)/12);zzfx(...[0.8*(1/Math.pow(10,Math.max(0,(f-1000)/3000))),0,f,.02,.12,.38,1,1.5,,,,,,,,,,.96,.02,,-1417]);i=(i+1)%(d.length/2);j=d[i*2]}},1000/69)}
+dd=_=>{let i=0,j=1,f;setInterval(_=>{j--;while(!j){f=440*2**((d[i*2+1]-69)/12);zzfx(...[0.02*(1/Math.pow(10,Math.max(0,(f-1000)/3000))),0,f,.02,.12,.38,1,1.5,,,,,,,,,,.96,.02,,-1417]);i=(i+1)%(d.length/2);j=d[i*2]}},1000/69)}
 r.setClearColor(0x79aacf);r.xr.enabled=true
 window.onclick=_=>{dd();navigator.xr.requestSession('immersive-vr',{requiredFeatures:["hand-tracking",'local-floor']}).then(_=>r.xr.setSession(_))}
 
