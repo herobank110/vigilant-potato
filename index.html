@@ -40,7 +40,7 @@ shk.position.set(-.3,.8,-.3)
 
 zs.add(tre,dnt,shk)
 
-let hds=fr(4,_=>a(lt,a(Ls,.02),m(0))),hld=[],hlp=[dnt,shk]
+let hds=fr(4,_=>a(lt,a(Ls,.02),m(0))),hld=[],hlp=[dnt,shk],xxx,yyy
 zs.add(...hds)
 
 r.setAnimationLoop(t=>{
@@ -48,17 +48,37 @@ let dt=t-zz;zz=t
 
 fr(2,i=>{
 let j=r.xr.getHand(i).joints;
-['thumb','index-finger'].map((_,l)=>{let k=j[_+'-tip'];if(k)hds[(i*2)+l].position.copy(k.position)})
+['thumb','index-finger'].map((_,l)=>{let k=j[_+'-tip'];k&&(hds[(i*2)+l].position.copy(k.position))})
 
 //   if holding, move it to middle dist
 //      if not pinching any more, drop it
 //   if pinching and thing in range, grab it
-let p=hds[i*2].position,q=hds[i*2+1].position,d=p.distanceTo(q),n=p.clone().lerp(q,.5),s=d<.024
-fr(2,j=>hds[i*2+j].material.color.set(s?0xff0000:0x00ff00))
+let p=hds[i*2].position,q=hds[i*2+1].position,d=p.distanceTo(q),n=p.clone().lerp(q,.5),
+s=d<.024,w=j['wrist']
+// console.log(w)
+// fr(2,j=>hds[i*2+j].material.color.set(s?0xff0000:0x00ff00))
+fr(2,j=>hds[i*2+j].visible=!s)
+// console.log(s)
 
-hlp.map((p,j)=>{if(!hld[i]&&s&&n.distanceTo(p.position)<.13){hld[i]=p;p.rotation.x=(-PI/2*(j+1))}})
+// hlp.map((p,j)=>{if(!hld[i]&&s&&n.distanceTo(p.position)<.13){hld[i]=p;p.rotation.x=(-PI/2*(j+1))}})
+hlp.map((p,j)=>{if(!hld[i]&&s&&n.distanceTo(p.position)<.13){
+    hld[i]=p;
+    xxx=p.quaternion.clone();//.invert();
+    yyy=w.quaternion.clone().invert()
+    // xxx=p.rotation.clone()
+    console.log("xxx", xxx)
+    // p.rotation.x=(-PI/2*(j+1))
+}})
 if(hld[i]&&!s){hld[i]===shk&&(shk.rotation.x=0);hld[i]=null}
 hld[i]?.position.copy(n).addScalar(-.02) // TODO: rotation?
+if(hld[i]&&w&&xxx&&yyy){
+    // hld[i].rotation.copy(w.rotation);
+    // hld[i].applyQuaternion(xxx)
+    // hld[i].quaternion.set(0,0,0,1)
+    // hld[i].applyQuaternion(xxx)
+    hld[i].quaternion.copy(xxx)
+    hld[i].applyQuaternion(w.quaternion.clone().premultiply(yyy))
+}
 })
 
 // if dnt and shk held, pour sprinkles
@@ -81,8 +101,8 @@ dnt.children[2].count+=dt*0.08
 
 // dnt.children[2].count+=dt*0.08
 
-if (r.xr.getHand(0).joints['wrist']) 
-shk.rotation.copy(r.xr.getHand(0).joints['wrist'].rotation)
+// if (r.xr.getHand(0).joints['wrist']) 
+// shk.rotation.copy(r.xr.getHand(0).joints['wrist'].rotation)
 
 r.render(zs, zc)
 });
@@ -90,7 +110,8 @@ r.render(zs, zc)
 // TODO: Remove in prod
 // window.onkeydown=_=>r.xr.getSession()?.end()
 window.shk=shk
+// hld=[shk,dnt]
 
 // dnt.position.set(0,0,-1)  
-// r.setSize(ww,wh);document.body.append(r.domElement)
+r.setSize(ww,wh);document.body.append(r.domElement)
 })()</script><a>Click to start</a>
