@@ -25,7 +25,6 @@ fr=(n,f=_=>_)=>{let _=[];for(let i=0;i<n;i++)_.push(f(i));return _}
 zs=a($a),zc=a(vt,45,ww/wh),r=a(df),zz=0,
 d=a(Uint8Array,await(await fetch("d")).arrayBuffer()),
 tree=_=>{let t=a(je),h=.9,mt=m(0xdeba87),x=a(lt,a(Ms,.01,.02,h),mt);x.position.y+=h/2;t.add(x);fr(20,i=>{let r=a(je);r.position.y=Math.sin((i/20)*934.485)/5+.5;r.rotateY((i/20)*PI*2);let l=(1-r.position.y)*.7,y=a(lt,a(Ms,.01,.006,l),mt);y.rotateX(PI/-1.4+l/5);y.position.z+=l/2.5;r.add(y);t.add(r)});return t},
-// donut=_=>{let t=a(je),g=a(Ro,.03,.015),x=a(lt,g,m(0xef6eab)),y=a(lt,g,m(0xbf996d));t.add(x,y);y.position.z-=.01;return t},
 donut=_=>{let t=a(je),g=a(Ro,.03,.015),x=a(lt,g,m(0xef6eab)),y=a(lt,g,m(0xbf996d));let n=1000,d=a(je),c=a(de),z=a(no,a(Ms,.00056,.00056,.0061,5),a(Ai),n);fr(n,i=>{let j=i*9345.934,y=i*3484.984,q=Math.sin(j)*.5+.5,r=.02+(q*.02);d.position.set(r*Math.cos(y),r*Math.sin(y),.011+(.0056*Math.sin(Math.PI*q)));d.rotateZ(j);d.updateMatrix();z.setMatrixAt(i, d.matrix);c.set([0xffde39,0x0884c0,0xdf1482,0xff9b32,0x1c894c][Math.floor((j%390.382)%5)]);z.setColorAt(i,c)});y.position.z-=.001;t.add(x,y,z);z.count=0;return t},
 shaker=_=>{let t=a(je),x=a(lt,a(Ms,.017,.02,.066),a(Ai,{ color: 0xdddddd }));t.add(x);return t}
 
@@ -55,69 +54,26 @@ let j=r.xr.getHand(i).joints;
 //   if pinching and thing in range, grab it
 let p=hds[i*2].position,q=hds[i*2+1].position,d=p.distanceTo(q),n=p.clone().lerp(q,.5),
 s=d<.024,w=j['wrist']
-// console.log(w)
-// fr(2,j=>hds[i*2+j].material.color.set(s?0xff0000:0x00ff00))
 fr(2,j=>hds[i*2+j].visible=!s)
-// console.log(s)
 
-// hlp.map((p,j)=>{if(!hld[i]&&s&&n.distanceTo(p.position)<.13){hld[i]=p;p.rotation.x=(-PI/2*(j+1))}})
 hlp.map((p,j)=>{if(!hld[i]&&s&&n.distanceTo(p.position)<.13){
     hld[i]=p;
     xxx=p.quaternion.clone().premultiply(w.quaternion.clone().invert())
-    // xxx=p.rotation.clone()
-    // console.log("xxx", xxx)
-    // p.rotation.x=(-PI/2*(j+1))
+    // TODO: same for left hand xxx
 }})
 if(hld[i]&&!s){hld[i]===shk&&(shk.rotation.x=0);hld[i]=null}
-// hld[i]?.position.copy(n).addScalar(-.02) // TODO: rotation?
 hld[i]?.position.copy(n)//.addScalar(-.02) // TODO: rotation?
 if(hld[i]&&w&&xxx){
-    // hld[i].rotation.copy(w.rotation);
-    // hld[i].applyQuaternion(xxx)
-    // hld[i].quaternion.set(0,0,0,1)
-    // hld[i].applyQuaternion(xxx)
-
-    // hld[i].quaternion.copy(xxx)
-    // hld[i].applyQuaternion(w.quaternion.clone().premultiply(yyy))
-
-    // hld[i].quaternion.copy(xxx).premultiply(yyy).premultiply(w.quaternion)
     hld[i].quaternion.copy(xxx).premultiply(w.quaternion)
 }
 })
 
 // if dnt and shk held, pour sprinkles
-// let a=dnt.position.clone()//;a.y=shk.y  // for some reason not working
-a=dnt.position.clone();a.y=shk.position.y  // for some reason not working
-// console.log(a,shk.position)
-// console.log(
-//     '',
-//     a.x.toFixed(2),
-//     a.y.toFixed(2),
-//     a.z.toFixed(2),'\n',
-//     shk.position.x.toFixed(2),
-//     shk.position.y.toFixed(2),
-//     shk.position.z.toFixed(2),'\n',a.distanceTo(shk.position))
+a=dnt.position.clone();a.y=shk.position.y
 if(hld[0]&&hld[1]&&shk.position.y>dnt.position.y&&a.distanceTo(shk.position)<.05) {
-// if(hld[0]&&hld[1]) {
-// let z=dnt.children[2];z.count=Math.min(1e3,z.count+dt*0.08)
-// console.log("fufkasdas",dnt.children[2].count)
 dnt.children[2].frustumCulled=false  // TODO: move to constructor
 dnt.children[2].count+=dt*0.08
-// dnt.children[2].count=dnt.children[2].count+3
-// dnt.children[2].count
-// dnt.children[2].count = 1000
-// dnt.children[2].count = 1000
 }
-//  else {
-// dnt.children[2].count = 100
-// dnt.children[2].count = 100
-// }
-
-// dnt.children[2].count+=dt*0.08
-
-// if (r.xr.getHand(0).joints['wrist']) 
-// shk.rotation.copy(r.xr.getHand(0).joints['wrist'].rotation)
-
 r.render(zs, zc)
 });
 
