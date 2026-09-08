@@ -70,10 +70,8 @@ hlp.map((p,j)=>{if(!hld[i]&&s&&n.distanceTo(p.position)<.13){
     // TODO: same for left hand xxx
 }})
 if(hld[i]&&!s){hld[i]===shk&&(shk.rotation.x=0);hld[i]=null}
-hld[i]?.position.copy(n)//.addScalar(-.02) // TODO: rotation?
-if(hld[i]&&w&&xxx){
-    hld[i].quaternion.copy(xxx).premultiply(w.quaternion)
-}
+hld[i]?.position.copy(n)
+if(hld[i]&&w&&xxx)hld[i].quaternion.copy(xxx).premultiply(w.quaternion)
 })
 
 // if dnt and shk held, pour sprinkles
@@ -85,7 +83,7 @@ dnt.children[2].count+=dt*0.08
 // tx(Math.floor((t/1e3)%2)?0x1F44C:0x1F90F)
 // tx(0x1F90F)
 tx(0x1F446)
-M.sin()
+// console.log(M.sin(t/1e3*PI*2))
 
 
 r.render(zs, zc)
