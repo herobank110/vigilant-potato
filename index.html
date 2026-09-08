@@ -22,12 +22,18 @@ createBufferSource();b.buffer=p;b.connect(X.destination);b.start()}
 var{innerWidth:ww,innerHeight:wh}=window,
 M=Math,
 a=($,..._)=>new $(..._),m=c=>a(Bo,{color:c}),mm=m=>a(Ai,{map:m,transparent:true,side:Ri}),PI=M.PI,
-fr=(n,f=_=>_)=>{let _=[];for(let i=0;i<n;i++)_.push(f(i));return _}
+fr=(n,f=_=>_)=>{_=[];for(let i=0;i<n;i++)_.push(f(i));return _}
 zs=a($a),zc=a(vt,45,ww/wh),r=a(df),zz=0,
-d=a(Uint8Array,await(await fetch("d")).arrayBuffer()),
+d=a(Uint8Array,await(await fetch("d")).arrayBuffer())
+ccc=[0xffde39,0x0884c0,0xdf1482,0xff9b32,0x1c894c]
+spg=a(Ms,.00056,.00056,.0061,5),
 tree=_=>{let t=a(je),h=.9,mt=m(0xdeba87),x=a(lt,a(Ms,.01,.02,h),mt);x.position.y+=h/2;t.add(x);fr(20,i=>{let r=a(je);r.position.y=M.sin((i/20)*934.485)/5+.5;r.rotateY((i/20)*PI*2);let l=(1-r.position.y)*.7,y=a(lt,a(Ms,.01,.006,l),mt);y.rotateX(PI/-1.4+l/5);y.position.z+=l/2.5;r.add(y);t.add(r)});return t},
-donut=_=>{let t=a(je),g=a(Ro,.03,.015),x=a(lt,g,m(0xef6eab)),y=a(lt,g,m(0xbf996d));y.castShadow=true;let n=1000,d=a(je),c=a(de),z=a(no,a(Ms,.00056,.00056,.0061,5),a(Ai),n);fr(n,i=>{let j=i*9345.934,y=i*3484.984,q=M.sin(j)*.5+.5,r=.02+(q*.02);d.position.set(r*M.cos(y),r*M.sin(y),.011+(.0056*M.sin(PI*q)));d.rotateZ(j);d.updateMatrix();z.setMatrixAt(i, d.matrix);c.set([0xffde39,0x0884c0,0xdf1482,0xff9b32,0x1c894c][M.floor((j%390.382)%5)]);z.setColorAt(i,c)});y.position.z-=.001;t.add(x,y,z);z.count=0;z.frustumCulled=false;t.t=1;return t},
-shaker=_=>(t=a(je),t.add(a(lt,a(Ms,.017,.02,.066),m(0xadadad))),t)
+donut=_=>{let t=a(je),g=a(Ro,.03,.015),x=a(lt,g,m(0xef6eab)),y=a(lt,g,m(0xbf996d));y.castShadow=true;let n=1000,d=a(je),c=a(de),z=a(no,spg,a(Ai),n);fr(n,i=>{let j=i*9345.934,y=i*3484.984,q=M.sin(j)*.5+.5,r=.02+(q*.02);d.position.set(r*M.cos(y),r*M.sin(y),.011+(.0056*M.sin(PI*q)));d.rotateZ(j);d.updateMatrix();z.setMatrixAt(i, d.matrix);c.set(ccc[M.floor((j%390.382)%5)]);z.setColorAt(i,c)});y.position.z-=.001;t.add(x,y,z);z.count=0;z.frustumCulled=false;t.t=1;return t},
+shaker=_=>(t=a(je),t.add(a(lt,a(Ms,.017,.02,.066),m(0xadadad)),
+(_=a(lt,spg,m(ccc[0])),_.position.set(.013,.015,.013),_),
+(_=a(lt,spg,m(ccc[1])),_.position.set(.017,.015,.007),_),
+(_=a(lt,spg,m(ccc[2])),_.position.set(.015,.015,.010),_),
+),t)
 
 txb=a(Wc,(c=document.createElement("canvas"),c.width=c.height=100,c)),txp=a(w),
 tx=(i,j=c.getContext("2d"))=>{j.clearRect(0,0,100,100);j.font="48px Arial";j.textBaseline="top";j.fillText(String.fromCodePoint(i),0,10);txb.needsUpdate=true}
