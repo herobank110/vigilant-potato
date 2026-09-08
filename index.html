@@ -81,11 +81,16 @@ dnt.children[2].count+=dt*0.08
 
 // dnt.children[2].count+=dt*0.08
 
+if (r.xr.getHand(0).joints['wrist']) 
+shk.rotation.copy(r.xr.getHand(0).joints['wrist'].rotation)
+
 r.render(zs, zc)
 });
 
 // TODO: Remove in prod
-window.onkeydown=_=>r.xr.getSession()?.end()
+// window.onkeydown=_=>r.xr.getSession()?.end()
+window.shk=shk
+
 // dnt.position.set(0,0,-1)  
 // r.setSize(ww,wh);document.body.append(r.domElement)
 })()</script><a>Click to start</a>
