@@ -29,18 +29,21 @@ donut=_=>{let t=a(je),g=a(Ro,.03,.015),x=a(lt,g,m(0xef6eab)),y=a(lt,g,m(0xbf996d
 shaker=_=>{let t=a(je),x=a(lt,a(Ms,.017,.02,.066),a(Ai,{ color: 0xdddddd }));t.add(x);return t}
 
 texts=_=>{
-    b=a(Wc,(c=document.createElement("canvas"),c.width=c.height=400,c))
+    b=a(Wc,(c=document.createElement("canvas"),c.width=c.height=100,c))
     e=c.getContext("2d")
     e.fillStyle='white'
-    e.fillRect(0,0,400,400)
+    // e.fillRect(0,0,400,400)
     e.fillStyle='red'
     e.font="48px Arial",
     e.textBaseline="top";
-    e.fillText("   lo World abcdefg",0,0),
+    // e.fillText("😭🤚🤌👆",0,0),
+    e.fillText(String.fromCodePoint(0x1F446),0,10),
+    // e.fillText('😀',0,0),
+    // e.fillText('\x1F600',0,0),
     b.needsUpdate=true
     return b
 }
-zs.add(a(lt,a(Bn),mm(texts())))
+zs.add(q=a(lt,a(Pr,.1,.1),mm(texts()))),q.position.set(0,1.3,-.4)
 // console.log(texts())
 // zs.add(a(lt,a(Bn),m(0xff0000)))
 
