@@ -25,7 +25,7 @@ fr=(n,f=_=>_)=>{let _=[];for(let i=0;i<n;i++)_.push(f(i));return _}
 zs=a($a),zc=a(vt,45,ww/wh),r=a(df),zz=0,
 d=a(Uint8Array,await(await fetch("d")).arrayBuffer()),
 tree=_=>{let t=a(je),h=.9,mt=m(0xdeba87),x=a(lt,a(Ms,.01,.02,h),mt);x.position.y+=h/2;t.add(x);fr(20,i=>{let r=a(je);r.position.y=Math.sin((i/20)*934.485)/5+.5;r.rotateY((i/20)*PI*2);let l=(1-r.position.y)*.7,y=a(lt,a(Ms,.01,.006,l),mt);y.rotateX(PI/-1.4+l/5);y.position.z+=l/2.5;r.add(y);t.add(r)});return t},
-donut=_=>{let t=a(je),g=a(Ro,.03,.015),x=a(lt,g,m(0xef6eab)),y=a(lt,g,m(0xbf996d));let n=1000,d=a(je),c=a(de),z=a(no,a(Ms,.00056,.00056,.0061,5),a(Ai),n);fr(n,i=>{let j=i*9345.934,y=i*3484.984,q=Math.sin(j)*.5+.5,r=.02+(q*.02);d.position.set(r*Math.cos(y),r*Math.sin(y),.011+(.0056*Math.sin(Math.PI*q)));d.rotateZ(j);d.updateMatrix();z.setMatrixAt(i, d.matrix);c.set([0xffde39,0x0884c0,0xdf1482,0xff9b32,0x1c894c][Math.floor((j%390.382)%5)]);z.setColorAt(i,c)});y.position.z-=.001;t.add(x,y,z);z.count=0;return t},
+donut=_=>{let t=a(je),g=a(Ro,.03,.015),x=a(lt,g,m(0xef6eab)),y=a(lt,g,m(0xbf996d));let n=1000,d=a(je),c=a(de),z=a(no,a(Ms,.00056,.00056,.0061,5),a(Ai),n);fr(n,i=>{let j=i*9345.934,y=i*3484.984,q=Math.sin(j)*.5+.5,r=.02+(q*.02);d.position.set(r*Math.cos(y),r*Math.sin(y),.011+(.0056*Math.sin(Math.PI*q)));d.rotateZ(j);d.updateMatrix();z.setMatrixAt(i, d.matrix);c.set([0xffde39,0x0884c0,0xdf1482,0xff9b32,0x1c894c][Math.floor((j%390.382)%5)]);z.setColorAt(i,c)});y.position.z-=.001;t.add(x,y,z);z.count=0;z.frustumCulled=false;return t},
 shaker=_=>{let t=a(je),x=a(lt,a(Ms,.017,.02,.066),a(Ai,{ color: 0xdddddd }));t.add(x);return t}
 
 dd=_=>{let i=0,j=1,f;setInterval(_=>{j--;while(!j){f=440*2**((d[i*2+1]-69)/12);zzfx(...[0.02*(1/Math.pow(10,Math.max(0,(f-1000)/3000))),0,f,.02,.12,.38,1,1.5,,,,,,,,,,.96,.02,,-1417]);i=(i+1)%(d.length/2);j=d[i*2]}},1000/69)}
@@ -69,9 +69,8 @@ if(hld[i]&&w&&xxx){
 })
 
 // if dnt and shk held, pour sprinkles
-a=dnt.position.clone();a.y=shk.position.y
-if(hld[0]&&hld[1]&&shk.position.y>dnt.position.y&&a.distanceTo(shk.position)<.05) {
-dnt.children[2].frustumCulled=false  // TODO: move to constructor
+b=dnt.position.clone();b.y=shk.position.y
+if(hld[0]&&hld[1]&&shk.position.y>dnt.position.y&&b.distanceTo(shk.position)<.05) {
 dnt.children[2].count+=dt*0.08
 }
 r.render(zs, zc)
