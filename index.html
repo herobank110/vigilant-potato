@@ -29,8 +29,8 @@ tree=_=>{let t=a(je),h=.9,mt=m(0xdeba87),x=a(lt,a(Ms,.01,.02,h),mt);x.position.y
 donut=_=>{let t=a(je),g=a(Ro,.03,.015),x=a(lt,g,m(0xef6eab)),y=a(lt,g,m(0xbf996d));let n=1000,d=a(je),c=a(de),z=a(no,a(Ms,.00056,.00056,.0061,5),a(Ai),n);fr(n,i=>{let j=i*9345.934,y=i*3484.984,q=M.sin(j)*.5+.5,r=.02+(q*.02);d.position.set(r*M.cos(y),r*M.sin(y),.011+(.0056*M.sin(PI*q)));d.rotateZ(j);d.updateMatrix();z.setMatrixAt(i, d.matrix);c.set([0xffde39,0x0884c0,0xdf1482,0xff9b32,0x1c894c][M.floor((j%390.382)%5)]);z.setColorAt(i,c)});y.position.z-=.001;t.add(x,y,z);z.count=0;z.frustumCulled=false;return t},
 shaker=_=>{let t=a(je),x=a(lt,a(Ms,.017,.02,.066),a(Ai,{ color: 0xdddddd }));t.add(x);return t}
 
-txb=a(Wc,(c=document.createElement("canvas"),c.width=c.height=100,c)),txe=c.getContext("2d")
-tx=i=>{txe.clearRect(0,0,100,100);txe.font="48px Arial";txe.textBaseline="top";txe.fillText(String.fromCodePoint(i),0,10),txb.needsUpdate=true}
+txb=a(Wc,(c=document.createElement("canvas"),c.width=c.height=100,c))
+tx=(i,j=c.getContext("2d"))=>{j.clearRect(0,0,100,100);j.font="48px Arial";j.textBaseline="top";j.fillText(String.fromCodePoint(i),0,10);txb.needsUpdate=true}
 zs.add(q=a(lt,a(Pr,.1,.1),mm(txb))),q.position.set(0,1.1,-.4)
 // console.log(texts())
 // zs.add(a(lt,a(Bn),m(0xff0000)))
@@ -81,7 +81,6 @@ dnt.children[2].count+=dt*0.08
 }
 
 // tx(Math.floor((t/1e3)%2)?0x1F44C:0x1F90F)
-// tx(0x1F90F)
 tx(0x1F446)
 // console.log(M.sin(t/1e3*PI*2))
 
