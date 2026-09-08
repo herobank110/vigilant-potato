@@ -86,8 +86,18 @@ if(hld[i]&&w&&xxx){
 })
 
 // if dnt and shk held, pour sprinkles
-let a=dnt.position.clone()//;a.y=shk.y  // for some reason not working
-if(hld[0]&&hld[1]&&shk.position.y>dnt.position.y&&a.distanceTo(shk.position)<0.1) {
+// let a=dnt.position.clone()//;a.y=shk.y  // for some reason not working
+a=dnt.position.clone();a.y=shk.position.y  // for some reason not working
+// console.log(a,shk.position)
+// console.log(
+//     '',
+//     a.x.toFixed(2),
+//     a.y.toFixed(2),
+//     a.z.toFixed(2),'\n',
+//     shk.position.x.toFixed(2),
+//     shk.position.y.toFixed(2),
+//     shk.position.z.toFixed(2),'\n',a.distanceTo(shk.position))
+if(hld[0]&&hld[1]&&shk.position.y>dnt.position.y&&a.distanceTo(shk.position)<.05) {
 // if(hld[0]&&hld[1]) {
 // let z=dnt.children[2];z.count=Math.min(1e3,z.count+dt*0.08)
 // console.log("fufkasdas",dnt.children[2].count)
