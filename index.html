@@ -21,12 +21,12 @@ createBufferSource();b.buffer=p;b.connect(X.destination);b.start()}
 
 var{innerWidth:ww,innerHeight:wh}=window,
 M=Math,
-a=($,..._)=>new $(..._),m=c=>a(Ai,{color:c}),mm=m=>a(Ai,{map:m,transparent:true,side:Ri}),PI=M.PI,
+a=($,..._)=>new $(..._),m=c=>a(Bo,{color:c}),mm=m=>a(Bo,{map:m,transparent:true,side:Ri}),PI=M.PI,
 fr=(n,f=_=>_)=>{let _=[];for(let i=0;i<n;i++)_.push(f(i));return _}
 zs=a($a),zc=a(vt,45,ww/wh),r=a(df),zz=0,
 d=a(Uint8Array,await(await fetch("d")).arrayBuffer()),
 tree=_=>{let t=a(je),h=.9,mt=m(0xdeba87),x=a(lt,a(Ms,.01,.02,h),mt);x.position.y+=h/2;t.add(x);fr(20,i=>{let r=a(je);r.position.y=M.sin((i/20)*934.485)/5+.5;r.rotateY((i/20)*PI*2);let l=(1-r.position.y)*.7,y=a(lt,a(Ms,.01,.006,l),mt);y.rotateX(PI/-1.4+l/5);y.position.z+=l/2.5;r.add(y);t.add(r)});return t},
-donut=_=>{let t=a(je),g=a(Ro,.03,.015),x=a(lt,g,m(0xef6eab)),y=a(lt,g,m(0xbf996d));let n=1000,d=a(je),c=a(de),z=a(no,a(Ms,.00056,.00056,.0061,5),a(Ai),n);fr(n,i=>{let j=i*9345.934,y=i*3484.984,q=M.sin(j)*.5+.5,r=.02+(q*.02);d.position.set(r*M.cos(y),r*M.sin(y),.011+(.0056*M.sin(PI*q)));d.rotateZ(j);d.updateMatrix();z.setMatrixAt(i, d.matrix);c.set([0xffde39,0x0884c0,0xdf1482,0xff9b32,0x1c894c][M.floor((j%390.382)%5)]);z.setColorAt(i,c)});y.position.z-=.001;t.add(x,y,z);z.count=0;z.frustumCulled=false;return t},
+donut=_=>{let t=a(je),g=a(Ro,.03,.015),x=a(lt,g,m(0xef6eab)),y=a(lt,g,m(0xbf996d));y.castShadow=true;let n=1000,d=a(je),c=a(de),z=a(no,a(Ms,.00056,.00056,.0061,5),a(Ai),n);fr(n,i=>{let j=i*9345.934,y=i*3484.984,q=M.sin(j)*.5+.5,r=.02+(q*.02);d.position.set(r*M.cos(y),r*M.sin(y),.011+(.0056*M.sin(PI*q)));d.rotateZ(j);d.updateMatrix();z.setMatrixAt(i, d.matrix);c.set([0xffde39,0x0884c0,0xdf1482,0xff9b32,0x1c894c][M.floor((j%390.382)%5)]);z.setColorAt(i,c)});y.position.z-=.001;t.add(x,y,z);z.count=0;z.frustumCulled=false;return t},
 shaker=_=>{let t=a(je),x=a(lt,a(Ms,.017,.02,.066),a(Ai,{ color: 0xdddddd }));t.add(x);return t}
 
 txb=a(Wc,(c=document.createElement("canvas"),c.width=c.height=100,c)),txp=a(w),
@@ -37,7 +37,7 @@ zs.add(txo=a(lt,a(Pr,.1,.1),mm(txb))),txo.position.set(0,1.1,-.4)
 
 
 dd=_=>{let i=0,j=1,f;setInterval(_=>{j--;while(!j){f=440*2**((d[i*2+1]-69)/12);zzfx(...[0.02*(1/M.pow(10,M.max(0,(f-1000)/3000))),0,f,.02,.12,.38,1,1.5,,,,,,,,,,.96,.02,,-1417]);i=(i+1)%(d.length/2);j=d[i*2]}},1000/69)}
-r.setClearColor(0x79aacf);r.xr.enabled=true
+r.setClearColor(0x79aacf);r.xr.enabled=true;r.shadowMap.enabled=true
 window.onclick=_=>{dd();navigator.xr.requestSession('immersive-vr',{requiredFeatures:["hand-tracking",'local-floor']}).then(_=>r.xr.setSession(_))}
 
 let tre=tree(),dnt=donut(),shk=shaker()
@@ -45,6 +45,26 @@ tre.position.set(.5,.8,-.6);
 dnt.position.set(.5,1.32,-.36)
 shk.position.set(-.3,.8,-.3)
 zs.add(tre,dnt,shk)
+
+zs.add(
+(_=a(lt,a(Bn,2,1,1),m(0xededed)),_.position.set(0,.3,-.6),_.receiveShadow=true,
+_),
+(_=a(Yo,0xffffff,3),_.position.set(0,6,0),_.castShadow=true,
+
+				_.shadow.camera.top = 2,
+				_.shadow.camera.bottom = - 2,
+				_.shadow.camera.right = 2,
+				_.shadow.camera.left = - 2,
+				_.shadow.mapSize.set( 4096, 4096 ),
+
+_),
+(a(Xo,0xbcbcbc,0xa5a5a5,3))
+)
+
+// zs.add( new THREE.DirectionalLight( 0xffffff, 3 );
+// 				light.position.set( 0, 6, 0 );
+// 				light.castShadow = true;
+
 txp.copy(dnt.position)
 txp.y-=.1
 
