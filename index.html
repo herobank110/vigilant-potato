@@ -70,7 +70,8 @@ hlp.map((p,j)=>{if(!hld[i]&&s&&n.distanceTo(p.position)<.13){
     // p.rotation.x=(-PI/2*(j+1))
 }})
 if(hld[i]&&!s){hld[i]===shk&&(shk.rotation.x=0);hld[i]=null}
-hld[i]?.position.copy(n).addScalar(-.02) // TODO: rotation?
+// hld[i]?.position.copy(n).addScalar(-.02) // TODO: rotation?
+hld[i]?.position.copy(n)//.addScalar(-.02) // TODO: rotation?
 if(hld[i]&&w&&xxx&&yyy){
     // hld[i].rotation.copy(w.rotation);
     // hld[i].applyQuaternion(xxx)
