@@ -63,22 +63,25 @@ fr(2,j=>hds[i*2+j].visible=!s)
 // hlp.map((p,j)=>{if(!hld[i]&&s&&n.distanceTo(p.position)<.13){hld[i]=p;p.rotation.x=(-PI/2*(j+1))}})
 hlp.map((p,j)=>{if(!hld[i]&&s&&n.distanceTo(p.position)<.13){
     hld[i]=p;
-    xxx=p.quaternion.clone();//.invert();
-    yyy=w.quaternion.clone().invert()
+    xxx=p.quaternion.clone().premultiply(w.quaternion.clone().invert())
     // xxx=p.rotation.clone()
-    console.log("xxx", xxx)
+    // console.log("xxx", xxx)
     // p.rotation.x=(-PI/2*(j+1))
 }})
 if(hld[i]&&!s){hld[i]===shk&&(shk.rotation.x=0);hld[i]=null}
 // hld[i]?.position.copy(n).addScalar(-.02) // TODO: rotation?
 hld[i]?.position.copy(n)//.addScalar(-.02) // TODO: rotation?
-if(hld[i]&&w&&xxx&&yyy){
+if(hld[i]&&w&&xxx){
     // hld[i].rotation.copy(w.rotation);
     // hld[i].applyQuaternion(xxx)
     // hld[i].quaternion.set(0,0,0,1)
     // hld[i].applyQuaternion(xxx)
-    hld[i].quaternion.copy(xxx)
-    hld[i].applyQuaternion(w.quaternion.clone().premultiply(yyy))
+
+    // hld[i].quaternion.copy(xxx)
+    // hld[i].applyQuaternion(w.quaternion.clone().premultiply(yyy))
+
+    // hld[i].quaternion.copy(xxx).premultiply(yyy).premultiply(w.quaternion)
+    hld[i].quaternion.copy(xxx).premultiply(w.quaternion)
 }
 })
 
@@ -112,6 +115,7 @@ r.render(zs, zc)
 // window.onkeydown=_=>r.xr.getSession()?.end()
 window.shk=shk
 // hld=[shk,dnt]
+dnt.position.set(.3,.8,-.3)
 
 // dnt.position.set(0,0,-1)  
 r.setSize(ww,wh);document.body.append(r.domElement)
