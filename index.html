@@ -82,7 +82,8 @@ dnt.children[2].count+=dt*0.08
 }
 
 // tx(Math.floor((t/1e3)%2)?0x1F44C:0x1F90F)
-txo.position.copy(txp).y+=.01*M.sin(t/1e3*PI*2)
+// txo.position.copy(txp).y+=.01*M.sin(t/1e3*PI*2)
+txo.position.copy(txp).y+=.01*(M.sin(t/400)**4)
 txo.lookAt(zc.position)
 // console.log(zc)
 tx(0x1F446)
