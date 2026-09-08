@@ -47,28 +47,15 @@ shk.position.set(-.3,.8,-.3)
 zs.add(tre,dnt,shk)
 
 zs.add(
-(_=a(lt,a(Bn,2,1,1),m(0xededed)),_.position.set(0,.3,-.6),_.receiveShadow=true,
-_),
-(_=a(Yo,0xffffff,3),_.position.set(0,6,0),_.castShadow=true,
-
-				_.shadow.camera.top = 2,
-				_.shadow.camera.bottom = - 2,
-				_.shadow.camera.right = 2,
-				_.shadow.camera.left = - 2,
-				_.shadow.mapSize.set( 4096, 4096 ),
-
-_),
+(_=a(lt,a(Bn,2,1,1),m(0xededed)),_.position.set(0,.3,-.6),_.receiveShadow=true,_),
+(_=a(Yo,0xffffff,3),_.position.set(0,6,0),_.castShadow=true,_.shadow.camera.top=2,_.shadow.camera.bottom=-2,_.shadow.camera.right=2,_.shadow.camera.left=-2,_.shadow.mapSize.set(4096,4096),_),
 (a(Xo,0xbcbcbc,0xa5a5a5,3))
 )
-
-// zs.add( new THREE.DirectionalLight( 0xffffff, 3 );
-// 				light.position.set( 0, 6, 0 );
-// 				light.castShadow = true;
 
 txp.copy(dnt.position)
 txp.y-=.1
 
-let hds=fr(4,_=>a(lt,a(Ls,.02),m(0))),hld=[],hlp=[dnt,shk],xxx,yyy
+let hds=fr(4,_=>a(lt,a(Ls,.02),m(0))),hld=[],hlp=[dnt,shk],xxx
 zs.add(...hds)
 
 r.setAnimationLoop(t=>{
