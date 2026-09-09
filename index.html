@@ -67,14 +67,13 @@ lst=0
 r.setAnimationLoop(t=>{
 dt=t-lst,lst=t
 vel=o=>(!o.lp&&(o.vel=a(w),o.lp=a(w)),o.vel.copy(o.position).sub(o.lp).divideScalar(dt),o.lp.copy(o.position),o.vel)
-hld.map(vel)
-// vel(shk)
+hld.filter(_=>_).map(vel)
 
-// console.log(
-//     shk.vel.x.toFixed(3),
-//     shk.vel.y.toFixed(3),
-//     shk.vel.z.toFixed(3),
-// )
+console.log(
+    dnt.vel?.x.toFixed(3),
+    dnt.vel?.y.toFixed(3),
+    dnt.vel?.z.toFixed(3),
+)
 
 fr(2,i=>{
 let j=r.xr.getHand(i).joints;
@@ -125,7 +124,7 @@ r.render(zs, zc)
 // window.onkeydown=_=>r.xr.getSession()?.end()
 window.shk=shk
 // hld=[shk,dnt]
-// dnt.position.set(.3,.8,-.3)
+dnt.position.set(.3,.8,-.3)
 
 // dnt.position.set(0,0,-1)  
 r.setSize(ww,wh);document.body.append(r.domElement)
