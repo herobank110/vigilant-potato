@@ -28,7 +28,7 @@ d=a(Uint8Array,await(await fetch("d")).arrayBuffer())
 ccc=[0xffde39,0x0884c0,0xdf1482,0xff9b32,0x1c894c]
 spg=a(Ms,.00056,.00056,.0061,5),
 tree=_=>{let t=a(je),h=.9,mt=m(0xdeba87),x=a(lt,a(Ms,.01,.02,h),mt);x.position.y+=h/2;t.add(x);fr(20,i=>{let r=a(je);r.position.y=M.sin((i/20)*934.485)/5+.5;r.rotateY((i/20)*PI*2);let l=(1-r.position.y)*.7,y=a(lt,a(Ms,.01,.006,l),mt);y.rotateX(PI/-1.4+l/5);y.position.z+=l/2.5;r.add(y);t.add(r)});return t},
-donut=_=>{let t=a(je),g=a(Ro,.03,.015),x=a(lt,g,m(0xef6eab)),y=a(lt,g,m(0xbf996d));y.castShadow=true;let n=1000,d=a(je),c=a(de),z=a(no,spg,a(Ai),n);fr(n,i=>{let j=i*9345.934,y=i*3484.984,q=M.sin(j)*.5+.5,r=.02+(q*.02);d.position.set(r*M.cos(y),r*M.sin(y),.011+(.0056*M.sin(PI*q)));d.rotateZ(j);d.updateMatrix();z.setMatrixAt(i, d.matrix);c.set(ccc[M.floor((j%390.382)%5)]);z.setColorAt(i,c)});y.position.z-=.001;t.add(x,y,z);z.count=0;z.frustumCulled=false;t.t=1;t.lp=a(w);return t},
+donut=_=>{let t=a(je),g=a(Ro,.03,.015),x=a(lt,g,m(0xef6eab)),y=a(lt,g,m(0xbf996d));y.castShadow=true;let n=1000,d=a(je),c=a(de),z=a(no,spg,a(Ai),n);fr(n,i=>{let j=i*9345.934,y=i*3484.984,q=M.sin(j)*.5+.5,r=.02+(q*.02);d.position.set(r*M.cos(y),r*M.sin(y),.011+(.0056*M.sin(PI*q)));d.rotateZ(j);d.updateMatrix();z.setMatrixAt(i, d.matrix);c.set(ccc[M.floor((j%390.382)%5)]);z.setColorAt(i,c)});y.position.z-=.001;t.add(x,y,z);z.count=0;z.frustumCulled=false;t.t=1;return t},
 shaker=_=>(t=a(je),t.add(a(lt,a(Ms,.017,.02,.066),m(0xadadad)),
 (_=a(lt,spg,m(ccc[0])),_.position.set(.013,.015,.013),_),
 (_=a(lt,spg,m(ccc[1])),_.position.set(.017,.015,.007),_),
@@ -46,11 +46,10 @@ dd=_=>{let i=0,j=1,f;setInterval(_=>{j--;while(!j){f=440*2**((d[i*2+1]-69)/12);z
 r.setClearColor(0x79aacf);r.xr.enabled=true;r.shadowMap.enabled=true
 window.onclick=_=>{dd();navigator.xr.requestSession('immersive-vr',{requiredFeatures:["hand-tracking",'local-floor']}).then(_=>r.xr.setSession(_))}
 
-let tre=tree(),dnt=donut(),shk=shaker()
+zs.add(tre=tree(),dnt=donut(),shk=shaker())
 tre.position.set(.5,.8,-.6);
 dnt.position.set(.5,1.32,-.36)
 shk.position.set(-.3,.85,-.3)
-zs.add(tre,dnt,shk)
 
 zs.add(
 (_=a(lt,a(Bn,2,1,1),m(0xededed)),_.position.set(0,.3,-.6),_.receiveShadow=true,_),
