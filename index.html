@@ -42,7 +42,7 @@ zs.add(txo=a(lt,a(Pr,.1,.1),mm(txb))),txo.position.set(0,1.1,-.4)
 // zs.add(a(lt,a(Bn),m(0xff0000)))
 
 
-dd=_=>{let i=0,j=1,f;setInterval(_=>{j--;while(!j){f=440*2**((d[i*2+1]-69)/12);zzfx(...[0.02*(1/M.pow(10,M.max(0,(f-1000)/3000))),0,f,.02,.12,.38,1,1.5,,,,,,,,,,.96,.02,,-1417]);i=(i+1)%(d.length/2);j=d[i*2]}},1000/69)}
+dd=_=>{let i=0,j=1,f;setInterval(_=>{j--;while(!j){f=440*2**((d[i*2+1]-69)/12);zzfx(...[0.2*(1/M.pow(10,M.max(0,(f-1e3)/3e3))),0,f,.02,.12,.38,1,1.5,,,,,,,,,,.96,.02,,-1417]);i=(i+1)%(d.length/2);j=d[i*2]}},1e3/69)}
 r.setClearColor(0x79aacf);r.xr.enabled=true;r.shadowMap.enabled=true
 window.onclick=_=>{dd();navigator.xr.requestSession('immersive-vr',{requiredFeatures:["hand-tracking",'local-floor']}).then(_=>r.xr.setSession(_))}
 
