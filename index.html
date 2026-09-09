@@ -69,11 +69,11 @@ dt=t-lst,lst=t
 vel=o=>(!o.lp&&(o.vel=a(w),o.lp=a(w)),o.vel.copy(o.position).sub(o.lp).divideScalar(dt),o.lp.copy(o.position),o.vel)
 hld.filter(_=>_).map(vel)
 
-console.log(
-    dnt.vel?.x.toFixed(3),
-    dnt.vel?.y.toFixed(3),
-    dnt.vel?.z.toFixed(3),
-)
+// console.log(
+//     dnt.vel?.x.toFixed(3),
+//     dnt.vel?.y.toFixed(3),
+//     dnt.vel?.z.toFixed(3),
+// )
 
 fr(2,i=>{
 let j=r.xr.getHand(i).joints;
@@ -104,7 +104,10 @@ dnt.children[2].count+=dt*0.08
 }
 
 // if dnt not held, fall to table
-if(!dnt.t&&!hld.some(_=>_===dnt)&&dnt.position.y>.825){dnt.position.y-=.0006*dt;dnt.rotation.set(-PI/2,0,0)}
+if(!dnt.t&&!hld.some(_=>_===dnt)&&dnt.position.y>.825){
+    // dnt.position.y-=.0006*dt;dnt.rotation.set(-PI/2,0,0)
+dnt.position.add(dnt.vel)
+}
 
 
 // tx(Math.floor((t/1e3)%2)?0x1F44C:0x1F90F)
