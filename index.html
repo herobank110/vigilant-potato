@@ -103,12 +103,10 @@ if(hld[0]&&hld[1]&&shk.position.y>dnt.position.y&&b.distanceTo(shk.position)<.05
 dnt.children[2].count+=dt*0.08
 }
 
-// if dnt not held, fall to table
+// dnt throw
 if(!dnt.t&&!hld.some(_=>_===dnt)&&dnt.position.y>.825){
-    // dnt.position.y-=.0006*dt;dnt.rotation.set(-PI/2,0,0)
 dnt.vel.y=M.min(.05,dnt.vel.y-dt*.0008)
-console.log("fuck",dnt.vel)
-while(dnt.vel.length()>0.8)dnt.vel.multiplyScalar(.9)
+while(dnt.vel.length()>0.5)dnt.vel.multiplyScalar(.9)
 dnt.position.addScaledVector(dnt.vel,dt*.005)
 }
 
