@@ -66,7 +66,7 @@ zs.add(...hds)
 lst=0
 r.setAnimationLoop(t=>{
 dt=t-lst,lst=t
-vel=o=>(!o.lp&&(o.vel=a(w),o.lp=a(w)),o.vel.copy(o.position).sub(o.lp).divideScalar(dt),o.lp.copy(o.position),o.vel)
+vel=o=>(!o.lp&&(o.vel=a(w),o.lp=a(w)),o.vel.copy(o.position).sub(o.lp).divideScalar(1/dt),o.lp.copy(o.position),o.vel)
 hld.filter(_=>_).map(vel)
 
 // console.log(
@@ -106,7 +106,10 @@ dnt.children[2].count+=dt*0.08
 // if dnt not held, fall to table
 if(!dnt.t&&!hld.some(_=>_===dnt)&&dnt.position.y>.825){
     // dnt.position.y-=.0006*dt;dnt.rotation.set(-PI/2,0,0)
-dnt.position.add(dnt.vel)
+dnt.vel.y=M.min(.05,dnt.vel.y-dt*.0008)
+console.log("fuck",dnt.vel)
+while(dnt.vel.length()>0.8)dnt.vel.multiplyScalar(.9)
+dnt.position.addScaledVector(dnt.vel,dt*.005)
 }
 
 
