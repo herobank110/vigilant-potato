@@ -49,12 +49,7 @@ s.add(
 s.add(uno=a(lt,a(Bn),mm(unt=a(Wc,(unc=_=cv(),_.width=_.height=300,ldi('c.webp',i=>(unc.getContext("2d").drawImage(i,0,0),unt.needsUpdate=true)),_)))))
 uno.position.set(0,1,-3)
 //splat
-// qq=[]
-// splat=x=>a(lt,a(Pr,.2,.2),mm(qq=a(Wc,(k=>(ldi('e.svg',i=>(k.width=k.height=99,j=k.getContext('2d'),j.fillStyle=cs(x),j.fillRect(0,0,99,99),j.globalCompositeOperation="destination-atop",j.drawImage(i,0,0),qq.needsUpdate=true)),k))(cv()))))
-// spt=(spc=cv(),ldi('e.svg',i=>(spc.width=k.height=99,j=spc.getContext('2d'),j.fillStyle=cs(x),j.fillRect(0,0,99,99),j.globalCompositeOperation="destination-atop",j.drawImage(i,0,0),qq.needsUpdate=true)))
-spc=cv(),spi=0
-ldi('e.svg',i=>(spc.width=spc.height=99,j=spc.getContext('2d').drawImage(i,0,0)))
-// splat=x=>a(lt,a(Pr,.2,.2),(_=m(x),_.alphaMap=a(Wc,spt),_.transparent=true,_.needsUpdate=true,_))
+spc=cv(),spi=0,ldi('e.svg',i=>(spc.width=spc.height=99,j=spc.getContext('2d').drawImage(i,0,0)))
 splat=x=>a(lt,a(Pr,.2,.2),mn(x,a(Wc,spc)))
 
 //mainloop
@@ -76,10 +71,10 @@ s=d<.024,w=j['wrist']
 fr(2,j=>hds[i*2+j].visible=!s)
 ///hold
 hlp.map((p,j)=>{if(!hld[i]&&s&&n.distanceTo(p.position)<.13){
-    hld[i]=p;
-    p.t==1&&(p.t=0)
-    xxx=p.quaternion.clone().premultiply(w.quaternion.clone().invert())
-    // TODO: same for left hand xxx
+hld[i]=p;
+p.t==1&&(p.t=0)
+xxx=p.quaternion.clone().premultiply(w.quaternion.clone().invert())
+// TODO: same for left hand xxx
 }})
 ///letgo
 if(hld[i]&&!s){hld[i]===shk&&(shk.rotation.x=0);hld[i]=null}
@@ -95,7 +90,6 @@ if(hldshk&&shk.position.y>dnt.position.y&&(_=dnt.position.clone(),_.y=shk.positi
 if(!dnt.t&&!hld.some(_=>_===dnt)&&(dnt.position.y>.825||dnt.position.z<-.5)){dnt.vel.y=M.min(.42,dnt.vel.y-dt*.0008);while(dnt.vel.length()>0.8)dnt.vel.multiplyScalar(.9);dnt.position.addScaledVector(dnt.vel,dt*.005)}
 //splat
 if(dnt.position.z<-2.48&&!dnt.t){dnt.t=1;s.add(_=splat(ccc[2]));_.position.copy(dnt.position);_.position.z+=spi++*1e-5;_.rotateZ(PI*2*M.random())}
-
 //emoji
 txo.position.copy(txp).y+=.01*(M.sin(t/400)**4)
 txo.lookAt(cm.position)
@@ -103,30 +97,13 @@ tx(0x1F446)
 //
 r.render(s,cm)
 });
-
 // TODO: Remove in prod
 // window.onkeydown=_=>r.xr.getSession()?.end()
-window.shk=shk
 // hld=[shk,dnt]
 // dnt.position.set(.3,.8,-.3)
 //test launch
 // dnt.position.set(0,1,-.3);dnt.vel=a(w,0,.3,-.6);setTimeout(()=>dnt.t=0,500)
 // launchvel: x[-.11,.11],y[.18,.41],_.6
-dnt.position.set(0,1,-.3);dnt.vel=a(w,.11,.18,-.6);setTimeout(()=>dnt.t=0,500)
-
-// s.add(spl=splat(ccc[3])),spl.position.set(0,2,-1)
-// s.add(spl=splat(ccc[3])),spl.position.set(0,2,-2.5)
-// setTimeout(() => {
-
-// s.add(spl=splat(ccc[0])),spl.position.set(.09,1.06,-2.48+.00001),spl.rotateZ(1)
-// s.add(spl=splat(ccc[1])),spl.position.set(.12,1.06,-2.48+.00002)
-// s.add(spl=splat(ccc[2])),spl.position.set(.15,1.06,-2.48+.00003)
-// },100)
-
-// dnt.position.set(0,0,-1)  
-// r.setSize(ww,wh);
-document.body.append(r.domElement)
-window.mm=mm
-window.Wc=Wc
-window.cs=cs
+// dnt.position.set(0,1,-.3);dnt.vel=a(w,.11,.18,-.6);setTimeout(()=>dnt.t=0,500)
+window.shk=shk;window.mm=mm;window.Wc=Wc;window.cs=cs
 })()</script><a>Click to start</a>
