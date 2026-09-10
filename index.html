@@ -115,7 +115,9 @@ dnt.position.set(0,1,-.3);dnt.vel=a(w,0,.3,-.6);setTimeout(()=>dnt.t=0,500)
 // s.add(spl=splat(ccc[3])),spl.position.set(0,2,-2.5)
 setTimeout(() => {
 
-s.add(spl=splat(ccc[0])),spl.position.set(.09,1.06,-2.48)
+s.add(spl=splat(ccc[0])),spl.position.set(.09,1.06,-2.48+.00001),spl.rotateZ(1)
+s.add(spl=splat(ccc[1])),spl.position.set(.12,1.06,-2.48+.00002)
+s.add(spl=splat(ccc[2])),spl.position.set(.15,1.06,-2.48+.00003)
 },100)
 
 // dnt.position.set(0,0,-1)  
