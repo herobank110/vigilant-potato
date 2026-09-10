@@ -45,8 +45,9 @@ shk.position.set(-.3,.85,-.3)
 hds=fr(4,_=>a(lt,a(Ls,.02),m(0))),hld=[],hlp=[dnt,shk],xxx=0
 zs.add(...hds)
 //emoji
-txb=a(Wc,(c=document.createElement("canvas"),c.width=c.height=100,c)),txp=a(w),
-tx=(i,j=c.getContext("2d"))=>{j.clearRect(0,0,100,100);j.font="48px Arial";j.textBaseline="top";j.fillText(String.fromCodePoint(i),0,10);txb.needsUpdate=true}
+txb=a(Wc,(txc=_=document.createElement("canvas"),_.width=_.height=100,_)),
+txp=a(w),
+tx=(i,j=txc.getContext("2d"))=>{j.clearRect(0,0,100,100);j.font="48px Arial";j.textBaseline="top";j.fillText(String.fromCodePoint(i),0,10);txb.needsUpdate=true}
 zs.add(txo=a(lt,a(Pr,.1,.1),mm(txb))),txo.position.set(0,1.1,-.4)
 txp.copy(dnt.position)
 txp.y-=.1
@@ -56,6 +57,9 @@ zs.add(
 (_=a(Yo,0xffffff,3),_.position.set(0,6,0),_.castShadow=true,_.shadow.camera.top=2,_.shadow.camera.bottom=-2,_.shadow.camera.right=2,_.shadow.camera.left=-2,_.shadow.mapSize.set(4096,4096),_),
 (a(Xo,0xbcbcbc,0xa5a5a5,3))
 )
+//unicorn
+zs.add(uno=a(lt,a(Bn),mm(unt=a(Wc,(unc=_=document.createElement('canvas'),_.width=_.height=300,i=a(Image),i.src='c.webp',i.onload=_=>(unc.getContext("2d").drawImage(i,0,0),unt.needsUpdate=true),_)))))
+uno.position.set(0,1,-2)
 
 //
 lst=0
