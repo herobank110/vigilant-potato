@@ -48,49 +48,43 @@ uno.position.set(0,1,-3)
 //mainloop
 lst=0
 r.setAnimationLoop(t=>{
+//framevars
 dt=t-lst,lst=t
 vel=o=>(!o.lp&&(o.vel=a(w),o.lp=a(w)),o.vel.copy(o.position).sub(o.lp).divideScalar(1/dt),o.lp.copy(o.position),o.vel)
 hld.filter(_=>_).map(vel)
-
+hldshk=hld.find(_=>_===shk)
+//hands
 fr(2,i=>{
+///dots
 let j=r.xr.getHand(i).joints;
 ['thumb','index-finger'].map((_,l)=>{let k=j[_+'-tip'];k&&(hds[(i*2)+l].position.copy(k.position))})
-
-//   if holding, move it to middle dist
-//      if not pinching any more, drop it
-//   if pinching and thing in range, grab it
+///pinch
 let p=hds[i*2].position,q=hds[i*2+1].position,d=p.distanceTo(q),n=p.clone().lerp(q,.5),
 s=d<.024,w=j['wrist']
 fr(2,j=>hds[i*2+j].visible=!s)
-
+///hold
 hlp.map((p,j)=>{if(!hld[i]&&s&&n.distanceTo(p.position)<.13){
     hld[i]=p;
     p.t==1&&(p.t=0)
     xxx=p.quaternion.clone().premultiply(w.quaternion.clone().invert())
     // TODO: same for left hand xxx
 }})
+///letgo
 if(hld[i]&&!s){hld[i]===shk&&(shk.rotation.x=0);hld[i]=null}
+///drag
 hld[i]?.position.copy(n)
 if(hld[i]&&w&&xxx)hld[i].quaternion.copy(xxx).premultiply(w.quaternion)
+//
 })
-
-// if dnt and shk held, pour sprinkles
-hldshk=hld.find(_=>_===shk)
-if(hldshk&&shk.position.y>dnt.position.y&&(_=dnt.position.clone(),_.y=shk.position.y,_.distanceTo(shk.position)<.05)) {
-dnt.children[2].count+=dt*0.08
-}
-
-// dnt throw
-if(!dnt.t&&!hld.some(_=>_===dnt)&&dnt.position.y>.825){
-dnt.vel.y=M.min(.05,dnt.vel.y-dt*.0008)
-while(dnt.vel.length()>0.5)dnt.vel.multiplyScalar(.9)
-dnt.position.addScaledVector(dnt.vel,dt*.005)
-}
-
+//sprinkles
+if(hldshk&&shk.position.y>dnt.position.y&&(_=dnt.position.clone(),_.y=shk.position.y,_.distanceTo(shk.position)<.05)){dnt.children[2].count+=dt*0.08}
+//throw
+if(!dnt.t&&!hld.some(_=>_===dnt)&&dnt.position.y>.825){dnt.vel.y=M.min(.05,dnt.vel.y-dt*.0008);while(dnt.vel.length()>0.5)dnt.vel.multiplyScalar(.9);dnt.position.addScaledVector(dnt.vel,dt*.005)}
+//emoji
 txo.position.copy(txp).y+=.01*(M.sin(t/400)**4)
 txo.lookAt(cm.position)
 tx(0x1F446)
-
+//
 r.render(s,cm)
 });
 
