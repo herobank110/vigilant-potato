@@ -8,7 +8,7 @@ a=($,..._)=>new $(..._)
 m=c=>a(Bo,{color:c})
 mm=m=>a(Ai,{map:m,transparent:true,side:Ri})
 fr=(n,f=_=>_)=>{_=[];for(let i=0;i<n;i++)_.push(f(i));return _}
-ldi=(u,f,_)=>(_=a(Image),_.src=u,_.onload=_=>f(_))
+ldi=(u,f,_)=>(_=a(Image),_.src=u,_.onload=q=>f(_))
 cv=_=>document.createElement('canvas')
 //modeling
 ccc=[0xffde39,0x0884c0,0xdf1482,0xff9b32,0x1c894c]
@@ -47,7 +47,7 @@ s.add(
 s.add(uno=a(lt,a(Bn),mm(unt=a(Wc,(unc=_=cv(),_.width=_.height=300,ldi('c.webp',i=>(unc.getContext("2d").drawImage(i,0,0),unt.needsUpdate=true)),_)))))
 uno.position.set(0,1,-3)
 //splat
-splat=x=>a(lt,a(Bn),mm(
+splat=x=>a(lt,a(Bn,.1,.1,.1),mm(
 t=a(Wc,
 ((c,t)=>(
     ldi('e.svg',(i)=>(
@@ -112,7 +112,9 @@ window.shk=shk
 //test launch
 dnt.position.set(0,1,-.3);dnt.vel=a(w,0,.3,-.6);setTimeout(()=>dnt.t=0,500)
 
-s.add(spl=splat()),spl.position.set(0,2,-1)
+// s.add(spl=splat()),spl.position.set(0,2,-1)
+s.add(spl=splat(ccc[0])),spl.position.set(.1,1,-1.935)
+s.add(spl=splat(ccc[1])),spl.position.set(.2,1,-1.932)
 
 // dnt.position.set(0,0,-1)  
 // r.setSize(ww,wh);
