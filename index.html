@@ -1,7 +1,7 @@
-<body style="display:grid;place-items:center"><script>(async () => {
+<body style="display:grid;place-items:center"><script>(async _=>{
+//imports
 // eval((await (await fetch("https://play.js13kgames.com/2026/webxr/three.js")).text()).substr(0,716570))
 eval((await (await fetch("three.js")).text()).substr(0,716570))
-
 let // ZzFXMicro - Zuper Zmall Zound Zynth - v1.3.2 by Frank Force
 zzfxV=.3,               // volume
 zzfxX=new AudioContext, // audio context
@@ -18,62 +18,51 @@ f:(f<0?-1:1)*M.abs(f)**D)*(a<e?a/e:a<e+m?1-(a-e)/m*(1-w):a<e+m+r?w:a<h-c?(h-a-c)
 V=W):0),x=(b+=u+=y)*M.cos(A*H++),g+=x+x*E*Z(a**5),n&&++n>z&&(b+=v,C+=v,n=0),!l||++I%l
 ||(b=C,u=G,n=n||1);X=zzfxX,p=X.createBuffer(1,h,R);p.getChannelData(0).set(k);b=X.
 createBufferSource();b.buffer=p;b.connect(X.destination);b.start()}
-
-var{innerWidth:ww,innerHeight:wh}=window,
-M=Math,
-a=($,..._)=>new $(..._),m=c=>a(Bo,{color:c}),mm=m=>a(Ai,{map:m,transparent:true,side:Ri}),PI=M.PI,
+//utils
+M=Math,PI=M.PI
+a=($,..._)=>new $(..._)
+m=c=>a(Bo,{color:c})
+mm=m=>a(Ai,{map:m,transparent:true,side:Ri})
 fr=(n,f=_=>_)=>{_=[];for(let i=0;i<n;i++)_.push(f(i));return _}
-zs=a($a),zc=a(vt,45,ww/wh),r=a(df)
-d=a(Uint8Array,await(await fetch("d")).arrayBuffer())
+//modeling
 ccc=[0xffde39,0x0884c0,0xdf1482,0xff9b32,0x1c894c]
 spg=a(Ms,.00056,.00056,.0061,5),
-tree=_=>{let t=a(je),h=.9,mt=m(0xdeba87),x=a(lt,a(Ms,.01,.02,h),mt);x.position.y+=h/2;t.add(x);fr(20,i=>{let r=a(je);r.position.y=M.sin((i/20)*934.485)/5+.5;r.rotateY((i/20)*PI*2);let l=(1-r.position.y)*.7,y=a(lt,a(Ms,.01,.006,l),mt);y.rotateX(PI/-1.4+l/5);y.position.z+=l/2.5;r.add(y);t.add(r)});return t},
-donut=_=>{let t=a(je),g=a(Ro,.03,.015),x=a(lt,g,m(0xef6eab)),y=a(lt,g,m(0xbf996d));y.castShadow=true;let n=1000,d=a(je),c=a(de),z=a(no,spg,a(Ai),n);fr(n,i=>{let j=i*9345.934,y=i*3484.984,q=M.sin(j)*.5+.5,r=.02+(q*.02);d.position.set(r*M.cos(y),r*M.sin(y),.011+(.0056*M.sin(PI*q)));d.rotateZ(j);d.updateMatrix();z.setMatrixAt(i, d.matrix);c.set(ccc[M.floor((j%390.382)%5)]);z.setColorAt(i,c)});y.position.z-=.001;t.add(x,y,z);z.count=0;z.frustumCulled=false;t.t=1;return t},
-shaker=_=>(t=a(je),t.add(a(lt,a(Ms,.017,.02,.066),m(0xadadad)),
-(_=a(lt,spg,m(ccc[0])),_.position.set(.013,.015,.013),_),
-(_=a(lt,spg,m(ccc[1])),_.position.set(.017,.015,.007),_),
-(_=a(lt,spg,m(ccc[2])),_.position.set(.015,.015,.010),_),
-),t)
-
+tree=_=>{let t=a(je),h=.9,mt=m(0xdeba87),x=a(lt,a(Ms,.01,.02,h),mt);x.position.y+=h/2;t.add(x);fr(20,i=>{let r=a(je);r.position.y=M.sin((i/20)*934.485)/5+.5;r.rotateY((i/20)*PI*2);let l=(1-r.position.y)*.7,y=a(lt,a(Ms,.01,.006,l),mt);y.rotateX(PI/-1.4+l/5);y.position.z+=l/2.5;r.add(y);t.add(r)});return t}
+donut=_=>{let t=a(je),g=a(Ro,.03,.015),x=a(lt,g,m(0xef6eab)),y=a(lt,g,m(0xbf996d));y.castShadow=true;let n=1000,d=a(je),c=a(de),z=a(no,spg,a(Ai),n);fr(n,i=>{let j=i*9345.934,y=i*3484.984,q=M.sin(j)*.5+.5,r=.02+(q*.02);d.position.set(r*M.cos(y),r*M.sin(y),.011+(.0056*M.sin(PI*q)));d.rotateZ(j);d.updateMatrix();z.setMatrixAt(i, d.matrix);c.set(ccc[M.floor((j%390.382)%5)]);z.setColorAt(i,c)});y.position.z-=.001;t.add(x,y,z);z.count=0;z.frustumCulled=false;t.t=1;return t}
+shaker=_=>(t=a(je),t.add(a(lt,a(Ms,.017,.02,.066),m(0xadadad)),...fr(3,i=>(_=a(lt,spg,m(ccc[i])),_.position.set([.013,.017,.015][i],.015,[.013,.007,.01][i]),_))),t)
+//music
+d=a(Uint8Array,await(await fetch("d")).arrayBuffer())
+dd=_=>{let i=0,j=1,f;setInterval(_=>{j--;while(!j){f=440*2**((d[i*2+1]-69)/12);zzfx(...[0.2*(1/M.pow(10,M.max(0,(f-1e3)/3e3))),0,f,.02,.12,.38,1,1.5,,,,,,,,,,.96,.02,,-1417]);i=(i+1)%(d.length/2);j=d[i*2]}},1e3/69)}
+//3js
+zs=a($a),zc=a(vt),r=a(df)
+r.setClearColor(0x79aacf);r.xr.enabled=true;r.shadowMap.enabled=true
+window.onclick=_=>{dd();navigator.xr.requestSession('immersive-vr',{requiredFeatures:["hand-tracking",'local-floor']}).then(_=>r.xr.setSession(_))}
+//interactive
+zs.add(tre=tree(),dnt=donut(),shk=shaker())
+tre.position.set(.5,.8,-.6)
+dnt.position.set(.5,1.32,-.36)
+shk.position.set(-.3,.85,-.3)
+hds=fr(4,_=>a(lt,a(Ls,.02),m(0))),hld=[],hlp=[dnt,shk],xxx=0
+zs.add(...hds)
+//emoji
 txb=a(Wc,(c=document.createElement("canvas"),c.width=c.height=100,c)),txp=a(w),
 tx=(i,j=c.getContext("2d"))=>{j.clearRect(0,0,100,100);j.font="48px Arial";j.textBaseline="top";j.fillText(String.fromCodePoint(i),0,10);txb.needsUpdate=true}
 zs.add(txo=a(lt,a(Pr,.1,.1),mm(txb))),txo.position.set(0,1.1,-.4)
-// console.log(texts())
-// zs.add(a(lt,a(Bn),m(0xff0000)))
-
-
-dd=_=>{let i=0,j=1,f;setInterval(_=>{j--;while(!j){f=440*2**((d[i*2+1]-69)/12);zzfx(...[0.2*(1/M.pow(10,M.max(0,(f-1e3)/3e3))),0,f,.02,.12,.38,1,1.5,,,,,,,,,,.96,.02,,-1417]);i=(i+1)%(d.length/2);j=d[i*2]}},1e3/69)}
-r.setClearColor(0x79aacf);r.xr.enabled=true;r.shadowMap.enabled=true
-window.onclick=_=>{dd();navigator.xr.requestSession('immersive-vr',{requiredFeatures:["hand-tracking",'local-floor']}).then(_=>r.xr.setSession(_))}
-
-zs.add(tre=tree(),dnt=donut(),shk=shaker())
-tre.position.set(.5,.8,-.6);
-dnt.position.set(.5,1.32,-.36)
-shk.position.set(-.3,.85,-.3)
-
+txp.copy(dnt.position)
+txp.y-=.1
+//room&lights
 zs.add(
 (_=a(lt,a(Bn,2,1,1),m(0xededed)),_.position.set(0,.3,-.6),_.receiveShadow=true,_),
 (_=a(Yo,0xffffff,3),_.position.set(0,6,0),_.castShadow=true,_.shadow.camera.top=2,_.shadow.camera.bottom=-2,_.shadow.camera.right=2,_.shadow.camera.left=-2,_.shadow.mapSize.set(4096,4096),_),
 (a(Xo,0xbcbcbc,0xa5a5a5,3))
 )
 
-txp.copy(dnt.position)
-txp.y-=.1
-
-let hds=fr(4,_=>a(lt,a(Ls,.02),m(0))),hld=[],hlp=[dnt,shk],xxx
-zs.add(...hds)
-
+//
 lst=0
 r.setAnimationLoop(t=>{
 dt=t-lst,lst=t
 vel=o=>(!o.lp&&(o.vel=a(w),o.lp=a(w)),o.vel.copy(o.position).sub(o.lp).divideScalar(1/dt),o.lp.copy(o.position),o.vel)
 hld.filter(_=>_).map(vel)
-
-// console.log(
-//     dnt.vel?.x.toFixed(3),
-//     dnt.vel?.y.toFixed(3),
-//     dnt.vel?.z.toFixed(3),
-// )
 
 fr(2,i=>{
 let j=r.xr.getHand(i).joints;
@@ -98,8 +87,8 @@ if(hld[i]&&w&&xxx)hld[i].quaternion.copy(xxx).premultiply(w.quaternion)
 })
 
 // if dnt and shk held, pour sprinkles
-b=dnt.position.clone();b.y=shk.position.y
-if(hld[0]&&hld[1]&&shk.position.y>dnt.position.y&&b.distanceTo(shk.position)<.05) {
+hldshk=hld.find(_=>_===shk)
+if(hldshk&&shk.position.y>dnt.position.y&&(_=dnt.position.clone(),_.y=shk.position.y,_.distanceTo(shk.position)<.05)) {
 dnt.children[2].count+=dt*0.08
 }
 
@@ -111,15 +100,9 @@ dnt.position.addScaledVector(dnt.vel,dt*.005)
 }
 
 
-// tx(Math.floor((t/1e3)%2)?0x1F44C:0x1F90F)
-// txo.position.copy(txp).y+=.01*M.sin(t/1e3*PI*2)
 txo.position.copy(txp).y+=.01*(M.sin(t/400)**4)
 txo.lookAt(zc.position)
-// console.log(zc)
 tx(0x1F446)
-
-// console.log(M.sin(t/1e3*PI*2))
-
 
 r.render(zs, zc)
 });
@@ -131,5 +114,6 @@ window.shk=shk
 // dnt.position.set(.3,.8,-.3)
 
 // dnt.position.set(0,0,-1)  
-r.setSize(ww,wh);document.body.append(r.domElement)
+// r.setSize(ww,wh);
+document.body.append(r.domElement)
 })()</script><a>Click to start</a>
