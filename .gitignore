@@ -1,6 +1,1 @@
-*
-!.gitignore
-!c.webp
-!d
-!index.html
-!zz.js
+*/*

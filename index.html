@@ -19,31 +19,31 @@ shaker=_=>(t=a(je),t.add(a(lt,a(Ms,.017,.02,.066),m(0xadadad)),...fr(3,i=>(_=a(l
 d=a(Uint8Array,await(await fetch("d")).arrayBuffer())
 dd=_=>{let i=0,j=1,f;setInterval(_=>{j--;while(!j){f=440*2**((d[i*2+1]-69)/12);zzfx(...[0.2*(1/M.pow(10,M.max(0,(f-1e3)/3e3))),0,f,.02,.12,.38,1,1.5,,,,,,,,,,.96,.02,,-1417]);i=(i+1)%(d.length/2);j=d[i*2]}},1e3/69)}
 //3js
-zs=a($a),zc=a(vt),r=a(df)
+s=a($a),cm=a(vt),r=a(df)
 r.setClearColor(0x79aacf);r.xr.enabled=true;r.shadowMap.enabled=true
 window.onclick=_=>{dd();navigator.xr.requestSession('immersive-vr',{requiredFeatures:["hand-tracking",'local-floor']}).then(_=>r.xr.setSession(_))}
 //interactive
-zs.add(tre=tree(),dnt=donut(),shk=shaker())
+s.add(tre=tree(),dnt=donut(),shk=shaker())
 tre.position.set(.5,.8,-.6)
 dnt.position.set(.5,1.32,-.36)
 shk.position.set(-.3,.85,-.3)
 hds=fr(4,_=>a(lt,a(Ls,.02),m(0))),hld=[],hlp=[dnt,shk],xxx=0
-zs.add(...hds)
+s.add(...hds)
 //emoji
 txb=a(Wc,(txc=_=document.createElement("canvas"),_.width=_.height=100,_)),
 txp=a(w),
 tx=(i,j=txc.getContext("2d"))=>{j.clearRect(0,0,100,100);j.font="48px Arial";j.textBaseline="top";j.fillText(String.fromCodePoint(i),0,10);txb.needsUpdate=true}
-zs.add(txo=a(lt,a(Pr,.1,.1),mm(txb))),txo.position.set(0,1.1,-.4)
+s.add(txo=a(lt,a(Pr,.1,.1),mm(txb))),txo.position.set(0,1.1,-.4)
 txp.copy(dnt.position)
 txp.y-=.1
 //room&lights
-zs.add(
+s.add(
 (_=a(lt,a(Bn,2,1,1),m(0xededed)),_.position.set(0,.3,-.6),_.receiveShadow=true,_),
 (_=a(Yo,0xffffff,3),_.position.set(0,6,0),_.castShadow=true,_.shadow.camera.top=2,_.shadow.camera.bottom=-2,_.shadow.camera.right=2,_.shadow.camera.left=-2,_.shadow.mapSize.set(4096,4096),_),
 (a(Xo,0xbcbcbc,0xa5a5a5,3))
 )
 //unicorn
-zs.add(uno=a(lt,a(Bn),mm(unt=a(Wc,(unc=_=document.createElement('canvas'),_.width=_.height=300,i=a(Image),i.src='c.webp',i.onload=_=>(unc.getContext("2d").drawImage(i,0,0),unt.needsUpdate=true),_)))))
+s.add(uno=a(lt,a(Bn),mm(unt=a(Wc,(unc=_=document.createElement('canvas'),_.width=_.height=300,i=a(Image),i.src='c.webp',i.onload=_=>(unc.getContext("2d").drawImage(i,0,0),unt.needsUpdate=true),_)))))
 uno.position.set(0,1,-3)
 
 //
@@ -88,12 +88,11 @@ while(dnt.vel.length()>0.5)dnt.vel.multiplyScalar(.9)
 dnt.position.addScaledVector(dnt.vel,dt*.005)
 }
 
-
 txo.position.copy(txp).y+=.01*(M.sin(t/400)**4)
-txo.lookAt(zc.position)
+txo.lookAt(cm.position)
 tx(0x1F446)
 
-r.render(zs, zc)
+r.render(s,cm)
 });
 
 // TODO: Remove in prod
