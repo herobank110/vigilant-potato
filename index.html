@@ -7,6 +7,7 @@ M=Math,PI=M.PI
 a=($,..._)=>new $(..._)
 m=c=>a(Bo,{color:c})
 mm=m=>a(Ai,{map:m,transparent:true,side:Ri})
+mn=(c,m)=>a(Ai,{color:c,alphaMap:m,transparent:true,side:Ri})
 fr=(n,f=_=>_)=>{_=[];for(let i=0;i<n;i++)_.push(f(i));return _}
 ldi=(u,f,_)=>(_=a(Image),_.src=u,_.onload=q=>f(_))
 cv=_=>document.createElement('canvas')
@@ -49,8 +50,12 @@ s.add(uno=a(lt,a(Bn),mm(unt=a(Wc,(unc=_=cv(),_.width=_.height=300,ldi('c.webp',i
 uno.position.set(0,1,-3)
 //splat
 // qq=[]
-splat=x=>a(lt,a(Pr,.2,.2),mm(qq=a(Wc,(k=>(ldi('e.svg',i=>(k.width=k.height=99,j=k.getContext('2d'),j.fillStyle=cs(x),j.fillRect(0,0,99,99),j.globalCompositeOperation="destination-atop",j.drawImage(i,0,0),qq.needsUpdate=true)),k))(cv()))))
-
+// splat=x=>a(lt,a(Pr,.2,.2),mm(qq=a(Wc,(k=>(ldi('e.svg',i=>(k.width=k.height=99,j=k.getContext('2d'),j.fillStyle=cs(x),j.fillRect(0,0,99,99),j.globalCompositeOperation="destination-atop",j.drawImage(i,0,0),qq.needsUpdate=true)),k))(cv()))))
+// spt=(spc=cv(),ldi('e.svg',i=>(spc.width=k.height=99,j=spc.getContext('2d'),j.fillStyle=cs(x),j.fillRect(0,0,99,99),j.globalCompositeOperation="destination-atop",j.drawImage(i,0,0),qq.needsUpdate=true)))
+spc=cv()
+ldi('e.svg',i=>(spc.width=spc.height=99,j=spc.getContext('2d').drawImage(i,0,0)))
+// splat=x=>a(lt,a(Pr,.2,.2),(_=m(x),_.alphaMap=a(Wc,spt),_.transparent=true,_.needsUpdate=true,_))
+splat=x=>a(lt,a(Pr,.2,.2),mn(x,a(Wc,spc)))
 
 //mainloop
 lst=0
@@ -108,7 +113,10 @@ dnt.position.set(0,1,-.3);dnt.vel=a(w,0,.3,-.6);setTimeout(()=>dnt.t=0,500)
 
 // s.add(spl=splat(ccc[3])),spl.position.set(0,2,-1)
 // s.add(spl=splat(ccc[3])),spl.position.set(0,2,-2.5)
+setTimeout(() => {
+
 s.add(spl=splat(ccc[0])),spl.position.set(.09,1.06,-2.48)
+},100)
 
 // dnt.position.set(0,0,-1)  
 // r.setSize(ww,wh);
