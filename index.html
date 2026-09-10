@@ -52,7 +52,7 @@ uno.position.set(0,1,-3)
 // qq=[]
 // splat=x=>a(lt,a(Pr,.2,.2),mm(qq=a(Wc,(k=>(ldi('e.svg',i=>(k.width=k.height=99,j=k.getContext('2d'),j.fillStyle=cs(x),j.fillRect(0,0,99,99),j.globalCompositeOperation="destination-atop",j.drawImage(i,0,0),qq.needsUpdate=true)),k))(cv()))))
 // spt=(spc=cv(),ldi('e.svg',i=>(spc.width=k.height=99,j=spc.getContext('2d'),j.fillStyle=cs(x),j.fillRect(0,0,99,99),j.globalCompositeOperation="destination-atop",j.drawImage(i,0,0),qq.needsUpdate=true)))
-spc=cv()
+spc=cv(),spi=0
 ldi('e.svg',i=>(spc.width=spc.height=99,j=spc.getContext('2d').drawImage(i,0,0)))
 // splat=x=>a(lt,a(Pr,.2,.2),(_=m(x),_.alphaMap=a(Wc,spt),_.transparent=true,_.needsUpdate=true,_))
 splat=x=>a(lt,a(Pr,.2,.2),mn(x,a(Wc,spc)))
@@ -94,7 +94,14 @@ if(hldshk&&shk.position.y>dnt.position.y&&(_=dnt.position.clone(),_.y=shk.positi
 // if(!dnt.t&&!hld.some(_=>_===dnt)&&dnt.position.y>.825){dnt.vel.y=M.min(.05,dnt.vel.y-dt*.0008);while(dnt.vel.length()>0.5)dnt.vel.multiplyScalar(.9);dnt.position.addScaledVector(dnt.vel,dt*.005)}
 if(!dnt.t&&!hld.some(_=>_===dnt)&&dnt.position.y>.825){dnt.vel.y=M.min(.35,dnt.vel.y-dt*.0008);while(dnt.vel.length()>0.8)dnt.vel.multiplyScalar(.9);dnt.position.addScaledVector(dnt.vel,dt*.005)}
 //splat
-if(dnt.position.z<-2.48&&!dnt.t){dnt.t=1}
+if(dnt.position.z<-2.48&&!dnt.t){dnt.t=1;
+
+s.add(_=splat(ccc[0]));
+_.position.copy(dnt.position);
+_.position.z+=spi++*1e-5;
+_.rotateZ(PI*2*M.random())
+}
+
 //emoji
 txo.position.copy(txp).y+=.01*(M.sin(t/400)**4)
 txo.lookAt(cm.position)
@@ -113,12 +120,12 @@ dnt.position.set(0,1,-.3);dnt.vel=a(w,0,.3,-.6);setTimeout(()=>dnt.t=0,500)
 
 // s.add(spl=splat(ccc[3])),spl.position.set(0,2,-1)
 // s.add(spl=splat(ccc[3])),spl.position.set(0,2,-2.5)
-setTimeout(() => {
+// setTimeout(() => {
 
-s.add(spl=splat(ccc[0])),spl.position.set(.09,1.06,-2.48+.00001),spl.rotateZ(1)
-s.add(spl=splat(ccc[1])),spl.position.set(.12,1.06,-2.48+.00002)
-s.add(spl=splat(ccc[2])),spl.position.set(.15,1.06,-2.48+.00003)
-},100)
+// s.add(spl=splat(ccc[0])),spl.position.set(.09,1.06,-2.48+.00001),spl.rotateZ(1)
+// s.add(spl=splat(ccc[1])),spl.position.set(.12,1.06,-2.48+.00002)
+// s.add(spl=splat(ccc[2])),spl.position.set(.15,1.06,-2.48+.00003)
+// },100)
 
 // dnt.position.set(0,0,-1)  
 // r.setSize(ww,wh);
