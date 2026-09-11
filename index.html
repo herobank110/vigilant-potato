@@ -17,7 +17,8 @@ ccc=[0xffde39,0x0884c0,0xdf1482,0xff9b32,0x1c894c]
 spg=a(Ms,.00056,.00056,.0061,5),
 tree=_=>{let t=a(je),h=.9,mt=m(0xdeba87),x=a(lt,a(Ms,.01,.02,h),mt);x.position.y+=h/2;t.add(x);fr(20,i=>{let r=a(je);r.position.y=M.sin((i/20)*934.485)/5+.5;r.rotateY((i/20)*PI*2);let l=(1-r.position.y)*.7,y=a(lt,a(Ms,.01,.006,l),mt);y.rotateX(PI/-1.4+l/5);y.position.z+=l/2.5;r.add(y);t.add(r)});return t}
 donut=_=>{let t=a(je),g=a(Ro,.03,.015),x=a(lt,g,m(0xef6eab)),y=a(lt,g,m(0xbf996d));y.castShadow=true;let n=1000,d=a(je),c=a(de),z=a(no,spg,a(Ai),n);fr(n,i=>{let j=i*9345.934,y=i*3484.984,q=M.sin(j)*.5+.5,r=.02+(q*.02);d.position.set(r*M.cos(y),r*M.sin(y),.011+(.0056*M.sin(PI*q)));d.rotateZ(j);d.updateMatrix();z.setMatrixAt(i, d.matrix);c.set(ccc[M.floor((j%390.382)%5)]);z.setColorAt(i,c)});y.position.z-=.001;t.add(x,y,z);z.count=0;z.frustumCulled=false;t.t=1;return t}
-shaker=_=>(t=a(je),t.add(a(lt,a(Ms,.017,.02,.066),m(0xadadad)),...fr(3,i=>(_=a(lt,spg,m(ccc[i])),_.position.set([.013,.017,.015][i],.015,[.013,.007,.01][i]),_))),t)
+// shaker=_=>(t=a(je),t.add(a(lt,a(Ms,.017,.02,.066),m(0xadadad)),...fr(3,i=>(_=a(lt,spg,m(ccc[i])),_.position.set([.013,.017,.015][i],.015,[.013,.007,.01][i]),_))),t)
+shaker=_=>(t=a(je),t.add(tt=a(je)),t.rotateX(-PI/2),tt.position.z=.015,tt.rotateX(PI/2),tt.add(a(lt,a(Ms,.017,.02,.066),m(0xadadad)),...fr(3,i=>(_=a(lt,spg,m(ccc[i])),_.position.set([.013,.017,.015][i],.015,[.013,.007,.01][i]),_))),t)
 //music
 d=a(Uint8Array,await(await fetch("d")).arrayBuffer())
 dd=_=>{let i=0,j=1,f;setInterval(_=>{j--;while(!j){f=440*2**((d[i*2+1]-69)/12);zzfx(...[0.2*(1/M.pow(10,M.max(0,(f-1e3)/3e3))),0,f,.02,.12,.38,1,1.5,,,,,,,,,,.96,.02,,-1417]);i=(i+1)%(d.length/2);j=d[i*2]}},1e3/69)}
@@ -84,7 +85,7 @@ hld[i]&&w&&hlo[i]&&hld[i].quaternion.copy(hlo[i]).premultiply(w.quaternion)
 })
 //sprinkles
 if(hldshk&&shk.position.y>dnt.position.y&&(_=dnt.position.clone(),_.y=shk.position.y,_.distanceTo(shk.position)<.05)){dnt.children[2].count+=dt*0.08}
-//throw/grav
+//throw/drop
 // if(!dnt.t&&!hld.some(_=>_===dnt)&&dnt.position.y>.825){dnt.vel.y=M.min(.05,dnt.vel.y-dt*.0008);while(dnt.vel.length()>0.5)dnt.vel.multiplyScalar(.9);dnt.position.addScaledVector(dnt.vel,dt*.005)}
 hlr.children.map(dnt=>{
 i=dnt.position.y>.82,j=dnt.position.z<-.5
