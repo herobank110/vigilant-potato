@@ -1,1 +1,11 @@
-  let t=a(je),x=a(lt,a(Ms,.017,.02,.066),a(Ai,{ color: 0xdddddd }));t.add(x)
+t.add(
+q=a(lt,
+a(Ls,.1+(1-i/n)*.14),
+a(Ai,{color:0x7a843b,transparent:true,opacity:.91,depthWrite:false})
+))
+q.scale.y=.6
+q.position.set(
+M.sign(M.sin(((i+1)/n)*48.74))*.16*(1-i/n+.2),
+.37+i/n*.7,
+M.sign(M.sin(((i+1)/n)*34.94))*.16*(1-i/n+.1)
+)
