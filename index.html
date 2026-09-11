@@ -84,6 +84,10 @@ if(hldshk&&shk.position.y>dnt.position.y&&(_=dnt.position.clone(),_.y=shk.positi
 if(!dnt.t&&!hld.some(_=>_===dnt)&&(dnt.position.y>.825||dnt.position.z<-.5)){dnt.vel.y=M.min(.42,dnt.vel.y-dt*.0008);while(dnt.vel.length()>0.8)dnt.vel.multiplyScalar(.9);dnt.position.addScaledVector(dnt.vel,dt*.005)}
 //splat
 if(dnt.position.z<-0.95&&!dnt.t){dnt.t=1;s.add(_=splat(ccc[2]));_.position.copy(dnt.position);_.position.z=++spi*1e-5-.975;_.rotateZ(PI*2*M.random())
+s.add(x=dnt.children[2])
+x.position.copy(_.position)
+x.rotation.set(0,0,0)
+x.scale.z=.2
 dnt.visible=false
 }
 //emoji
@@ -100,7 +104,8 @@ r.render(s,cm)
 //test launch
 // dnt.position.set(0,1,-.3);dnt.vel=a(w,0,.3,-.6);setTimeout(()=>dnt.t=0,500)
 // launchvel: x[-.11,.11],y[.18,.41],_.6
-dnt.position.set(-.3,1,-.3);dnt.vel=a(w,.11,.18,-.6);setTimeout(()=>dnt.t=0,500)
+// dnt.children[2].count=1000
+// dnt.position.set(-.3,1,-.3);dnt.vel=a(w,.11,.18,-.6);setTimeout(()=>dnt.t=0,500)
 window.shk=shk;window.mm=mm;window.Wc=Wc;window.cs=cs
 window.onkeydown=_=>{dd();navigator.xr.requestSession('immersive-vr',{requiredFeatures:["hand-tracking",'local-floor']}).then(_=>r.xr.setSession(_))}
 })()</script><a>Click to start</a>
