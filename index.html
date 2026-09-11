@@ -7,7 +7,7 @@ M=Math,PI=M.PI
 a=($,..._)=>new $(..._)
 fr=(n,f=_=>_)=>{_=[];for(let i=0;i<n;i++)_.push(f(i));return _}
 m=c=>a(Bo,{color:c})
-mm=m=>a(Ai,{map:m,transparent:true,side:Ri})
+mm=m=>a(Bo,{map:m,transparent:true,side:Ri})
 mn=(c,m)=>a(Ai,{color:c,alphaMap:m,alphaTest:.5})
 ldi=(u,f,_)=>(_=a(Image),_.src=u,_.onload=q=>f(_))
 ldic=(u,c)=>ldi(u,i=>(c.getContext("2d").drawImage(i,0,0)))
@@ -43,7 +43,7 @@ txp.y-=.1
 //room&lights
 s.add(
 (_=a(lt,a(Bn,2,1,1),m(0xededed)),_.position.set(0,.3,-.6),_.receiveShadow=true,_),
-(_=a(Yo,0xffffff,3),_.position.set(0,6,0),_.castShadow=true,_.shadow.camera.top=2,_.shadow.camera.bottom=-2,_.shadow.camera.right=2,_.shadow.camera.left=-2,_.shadow.mapSize.set(4096,4096),_),
+(_=a(Yo,0xffffff,3),_.position.set(3,6,2),_.castShadow=true,_.shadow.camera.top=2,_.shadow.camera.bottom=-2,_.shadow.camera.right=2,_.shadow.camera.left=-2,_.shadow.mapSize.set(4096,4096),_),
 (a(Xo,0xbcbcbc,0xa5a5a5,3))
 )
 //unicorn
