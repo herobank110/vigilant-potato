@@ -1,0 +1,29 @@
+ldi - load image
+ldic - load image to canvas
+cv - new canvas
+ccc - sprinkle colors
+spg - sprinkle geometry
+s - scene
+cm - camera
+r - renderer
+hlr - hold items root
+dnt - donut
+shk - sprinkle shaker
+hds - hand dots
+hld - held items
+hlo - held offsets
+txb - emoji texture
+txc - emoji canvas
+txp - emoji position
+tts - tutorial states
+tx - set emoji
+txo - emoji object
+uno - unicorn object
+unt - unicorn texture
+unp - unicorn cover
+spi - splat index
+spc - splat canvas
+lst - last time
+t - time
+dt - delta time
+hldshk - held shaker
