@@ -75,9 +75,9 @@ fr(2,j=>hds[i*2+j].visible=!s)
 ///hold
 // hlp.map((p,j)=>{if(!hld[i]&&s&&n.distanceTo(p.position)<.13){hld[i]=p;p.t==1&&(p.t=0);hlo[i]=p.quaternion.clone().premultiply(w.quaternion.clone().invert())}})
 hlr.children.map((p,j)=>{if(!hld[i]&&s&&n.distanceTo(p.position)<.13){hld[i]=p;p.t==1&&(p.t=0);hlo[i]=p.quaternion.clone().premultiply(w.quaternion.clone().invert())}})
-///letgo
+///letgo/return
 // if(hld[i]&&!s){hld[i]===shk&&(shk.rotation.x=0);hld[i]=null}
-if(hld[i]&&!s){let x=hld[i];setTimeout(_=>{x.parent===hlr&&!hld.some(_=>_===x)&&x.position.distanceTo(cm.position)>1&&x.position.set(.3,.8,-.3)},2e3);hld[i]=null;}
+if(hld[i]&&!s){let x=hld[i];setTimeout(_=>{x.parent===hlr&&!hld.some(_=>_===x)&&x.position.distanceTo(cm.position)>1&&x.position.set(0,.8,-.3)},2e3);hld[i]=null;}
 ///drag
 hld[i]?.position.copy(n)
 hld[i]&&w&&hlo[i]&&hld[i].quaternion.copy(hlo[i]).premultiply(w.quaternion)
@@ -88,7 +88,9 @@ if(hldshk&&shk.position.y>dnt.position.y&&(_=dnt.position.clone(),_.y=shk.positi
 //throw/drop
 hlr.children.map(k=>{i=k.position.y>.82,j=k.position.z<-.5;if(!k.t&&k.vel&&!hld.some(_=>_===k)&&(i||j)){k.vel.y=M.min(.42,k.vel.y-dt*.0008);while(k.vel.length()>0.8)k.vel.multiplyScalar(.9);k.position.addScaledVector(k.vel,dt*.005)};!i&&(k.position.y=.816,k.rotation.set(-PI/2,0,0))})
 //splat
-if(dnt.position.z<-0.95&&!dnt.t){dnt.t=1;s.add(_=splat(ccc[2]));_.position.copy(dnt.position);_.position.z=++spi*1e-5-.975;_.rotateZ(PI*2*M.random())
+// TODO: check x[-.55,.05] y[.86,1.4]
+// if(dnt.position.z<-0.95&&!dnt.t){dnt.t=1;s.add(_=splat(ccc[2]));_.position.copy(dnt.position);_.position.z=++spi*1e-5-.975;_.rotateZ(PI*2*M.random())
+if((_=dnt.position,_.z<-0.95&&_.x>-.55&&_.x<.05&&_.y>.86&&_.y<1.4)&&!dnt.t){dnt.t=1;s.add(_=splat(ccc[2]));_.position.copy(dnt.position);_.position.z=++spi*1e-5-.975;_.rotateZ(PI*2*M.random())
 s.add(x=dnt.children[2],dnt)
 x.position.copy(_.position)
 x.rotation.set(0,0,0)
