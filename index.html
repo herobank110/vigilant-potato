@@ -8,7 +8,7 @@ a=($,..._)=>new $(..._)
 fr=(n,f=_=>_)=>{_=[];for(let i=0;i<n;i++)_.push(f(i));return _}
 m=c=>a(Bo,{color:c})
 mm=m=>a(Ai,{map:m,transparent:true,side:Ri})
-mn=(c,m)=>a(Ai,{color:c,alphaMap:m,transparent:true,side:Ri})
+mn=(c,m)=>a(Ai,{color:c,alphaMap:m,alphaTest:.5})
 ldi=(u,f,_)=>(_=a(Image),_.src=u,_.onload=q=>f(_))
 ldic=(u,c)=>ldi(u,i=>(c.getContext("2d").drawImage(i,0,0)))
 cv=i=>(_=document.createElement('canvas'),_.width=_.height=i,_)
