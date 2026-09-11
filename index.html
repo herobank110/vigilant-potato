@@ -82,12 +82,11 @@ if(hldshk&&shk.position.y>dnt.position.y&&(_=dnt.position.clone(),_.y=shk.positi
 //throw/drop
 hlr.children.map(k=>{i=k.position.y>.82,j=k.position.z<-.5;if(!k.t&&k.vel&&!hld.some(_=>_===k)&&(i||j)){k.vel.y=M.min(.42,k.vel.y-dt*.0008);while(k.vel.length()>0.8)k.vel.multiplyScalar(.9);k.position.addScaledVector(k.vel,dt*.005)};!i&&(k.position.y=.816,k.rotation.set(-PI/2,0,0))})
 //splat/spawn
-if((_=dnt.position,_.z<-0.95&&_.x>-.55&&_.x<.05&&_.y>.86&&_.y<1.4)&&!dnt.t){dnt.t=1;s.add(_=splat(ccc[2]));_.position.copy(dnt.position);_.position.z=++spi*1e-5-.975;_.rotateZ(PI*2*M.random());s.add(x=dnt.children[2],dnt);x.position.copy(_.position);x.rotation.set(0,0,0);x.scale.z=.2;dnt.visible=false;hlr.add(dnt=donut());dnt.position.set(.34,1.15,-.35);tts[3]=1}
+if((_=dnt.position,_.z<-0.95&&_.x>-.55&&_.x<.05&&_.y>.86&&_.y<1.4)&&!dnt.t){dnt.t=1;s.add(_=splat(ccc[2]));_.position.copy(dnt.position);_.position.z=++spi*1e-5-.975;_.rotateZ(PI*2*M.random());s.add(x=dnt.children[2],dnt);x.position.copy(_.position);x.rotation.set(0,0,0);x.scale.z=.2;dnt.visible=false;hlr.add(dnt=donut());dnt.position.set(.34,1.15,-.35);tts[3]=1;setTimeout(_=>(tts[4]=1),2e3)}
 //emoji/tut
 unp.scale.setScalar(M.max(0,M.min(.99,1-(t/2e3)+1)))
 t>5e3&&(tx(0x1F446),txp.copy(dnt.position),txp.y-=.11,txp.x+=.02)
 tts[0]&&(tx(0x1F447),txp.copy(shk.position),txp.y+=.07,txp.x+=.02)
-// TODO: ghost shaker over donut
 tts[1]&&(txp.copy(dnt.position),txp.y+=.1)
 tts[2]&&(tx(0x1F446),txp.copy(uno.position),txp.y+=.02,txp.z+=.1)
 tts[3]&&(tx(0x1F44C),txp.copy(uno.position),txp.y+=.4)
