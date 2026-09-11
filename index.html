@@ -17,7 +17,6 @@ ccc=[0xffde39,0x0884c0,0xdf1482,0xff9b32,0x1c894c]
 spg=a(Ms,.00056,.00056,.0061,5),
 tree=_=>{let t=a(je),h=.9,mt=m(0xdeba87),x=a(lt,a(Ms,.01,.02,h),mt);x.position.y+=h/2;t.add(x);fr(20,i=>{let r=a(je);r.position.y=M.sin((i/20)*934.485)/5+.5;r.rotateY((i/20)*PI*2);let l=(1-r.position.y)*.7,y=a(lt,a(Ms,.01,.006,l),mt);y.rotateX(PI/-1.4+l/5);y.position.z+=l/2.5;r.add(y);t.add(r)});return t}
 donut=_=>{let t=a(je),g=a(Ro,.03,.015),x=a(lt,g,m(0xef6eab)),y=a(lt,g,m(0xbf996d));y.castShadow=true;let n=1000,d=a(je),c=a(de),z=a(no,spg,a(Ai),n);fr(n,i=>{let j=i*9345.934,y=i*3484.984,q=M.sin(j)*.5+.5,r=.02+(q*.02);d.position.set(r*M.cos(y),r*M.sin(y),.011+(.0056*M.sin(PI*q)));d.rotateZ(j);d.updateMatrix();z.setMatrixAt(i, d.matrix);c.set(ccc[M.floor((j%390.382)%5)]);z.setColorAt(i,c)});y.position.z-=.001;t.add(x,y,z);z.count=0;z.frustumCulled=false;t.t=1;return t}
-// shaker=_=>(t=a(je),t.add(a(lt,a(Ms,.017,.02,.066),m(0xadadad)),...fr(3,i=>(_=a(lt,spg,m(ccc[i])),_.position.set([.013,.017,.015][i],.015,[.013,.007,.01][i]),_))),t)
 shaker=_=>(t=a(je),t.add(tt=a(je)),t.rotateX(-PI/2),tt.position.z=.015,tt.rotateX(PI/2),tt.add(a(lt,a(Ms,.017,.02,.066),m(0xadadad)),...fr(3,i=>(_=a(lt,spg,m(ccc[i])),_.position.set([.013,.017,.015][i],.015,[.013,.007,.01][i]),_))),t)
 //music
 d=a(Uint8Array,await(await fetch("d")).arrayBuffer())
@@ -32,7 +31,6 @@ hlr.add(dnt=donut(),shk=shaker())
 tre.position.set(.5,.8,-.6)
 dnt.position.set(.5,1.32,-.36)
 shk.position.set(-.3,.85,-.3)
-// hds=fr(4,_=>a(lt,a(Ls,.02),m(0))),hld=[],hlp=[dnt,shk],hlo=[]
 hds=fr(4,_=>a(lt,a(Ls,.02),m(0))),hld=[],hlo=[]
 s.add(...hds)
 //emoji
@@ -73,11 +71,9 @@ let p=hds[i*2].position,q=hds[i*2+1].position,d=p.distanceTo(q),n=p.clone().lerp
 s=d<.024,w=j['wrist']
 fr(2,j=>hds[i*2+j].visible=!s)
 ///hold
-// hlp.map((p,j)=>{if(!hld[i]&&s&&n.distanceTo(p.position)<.13){hld[i]=p;p.t==1&&(p.t=0);hlo[i]=p.quaternion.clone().premultiply(w.quaternion.clone().invert())}})
 hlr.children.map((p,j)=>{if(!hld[i]&&s&&n.distanceTo(p.position)<.13){hld[i]=p;p.t==1&&(p.t=0);hlo[i]=p.quaternion.clone().premultiply(w.quaternion.clone().invert())}})
 ///letgo/return
-// if(hld[i]&&!s){hld[i]===shk&&(shk.rotation.x=0);hld[i]=null}
-if(hld[i]&&!s){let x=hld[i];setTimeout(_=>{x.parent===hlr&&!hld.some(_=>_===x)&&x.position.distanceTo(cm.position)>1&&x.position.set(0,.8,-.3)},2e3);hld[i]=null;}
+if(hld[i]&&!s){let x=hld[i];setTimeout(_=>{x.parent===hlr&&!hld.some(_=>_===x)&&x.position.distanceTo(cm.position)>1&&x.position.set(0,.8,-.3)},2e3);hld[i]=null}
 ///drag
 hld[i]?.position.copy(n)
 hld[i]&&w&&hlo[i]&&hld[i].quaternion.copy(hlo[i]).premultiply(w.quaternion)
@@ -87,19 +83,8 @@ hld[i]&&w&&hlo[i]&&hld[i].quaternion.copy(hlo[i]).premultiply(w.quaternion)
 if(hldshk&&shk.position.y>dnt.position.y&&(_=dnt.position.clone(),_.y=shk.position.y,_.distanceTo(shk.position)<.05)){dnt.children[2].count+=dt*0.08}
 //throw/drop
 hlr.children.map(k=>{i=k.position.y>.82,j=k.position.z<-.5;if(!k.t&&k.vel&&!hld.some(_=>_===k)&&(i||j)){k.vel.y=M.min(.42,k.vel.y-dt*.0008);while(k.vel.length()>0.8)k.vel.multiplyScalar(.9);k.position.addScaledVector(k.vel,dt*.005)};!i&&(k.position.y=.816,k.rotation.set(-PI/2,0,0))})
-//splat
-// TODO: check x[-.55,.05] y[.86,1.4]
-// if(dnt.position.z<-0.95&&!dnt.t){dnt.t=1;s.add(_=splat(ccc[2]));_.position.copy(dnt.position);_.position.z=++spi*1e-5-.975;_.rotateZ(PI*2*M.random())
-if((_=dnt.position,_.z<-0.95&&_.x>-.55&&_.x<.05&&_.y>.86&&_.y<1.4)&&!dnt.t){dnt.t=1;s.add(_=splat(ccc[2]));_.position.copy(dnt.position);_.position.z=++spi*1e-5-.975;_.rotateZ(PI*2*M.random())
-s.add(x=dnt.children[2],dnt)
-x.position.copy(_.position)
-x.rotation.set(0,0,0)
-x.scale.z=.2
-dnt.visible=false
-hlr.add(dnt=donut())
-// dnt.position.set(.5,1.32,-.36)
-dnt.position.set(.3,.8,-.3)
-}
+//splat/spawn
+if((_=dnt.position,_.z<-0.95&&_.x>-.55&&_.x<.05&&_.y>.86&&_.y<1.4)&&!dnt.t){dnt.t=1;s.add(_=splat(ccc[2]));_.position.copy(dnt.position);_.position.z=++spi*1e-5-.975;_.rotateZ(PI*2*M.random());s.add(x=dnt.children[2],dnt);x.position.copy(_.position);x.rotation.set(0,0,0);x.scale.z=.2;dnt.visible=false;hlr.add(dnt=donut());dnt.position.set(.3,.8,-.3)}
 //emoji
 txo.position.copy(txp).y+=.01*(M.sin(t/400)**4)
 txo.lookAt(cm.position)
