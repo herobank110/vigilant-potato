@@ -5,13 +5,12 @@ eval((await (await fetch("three.js")).text()).substr(0,716570))
 //utils
 M=Math,PI=M.PI
 a=($,..._)=>new $(..._)
+fr=(n,f=_=>_)=>{_=[];for(let i=0;i<n;i++)_.push(f(i));return _}
 m=c=>a(Bo,{color:c})
 mm=m=>a(Ai,{map:m,transparent:true,side:Ri})
 mn=(c,m)=>a(Ai,{color:c,alphaMap:m,transparent:true,side:Ri})
-fr=(n,f=_=>_)=>{_=[];for(let i=0;i<n;i++)_.push(f(i));return _}
 ldi=(u,f,_)=>(_=a(Image),_.src=u,_.onload=q=>f(_))
 cv=_=>document.createElement('canvas')
-cs=c=>'#'+c.toString(16).padStart(6,'0')
 //modeling
 ccc=[0xffde39,0x0884c0,0xdf1482,0xff9b32,0x1c894c]
 spg=a(Ms,.00056,.00056,.0061,5),
