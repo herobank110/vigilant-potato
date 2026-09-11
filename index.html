@@ -77,7 +77,7 @@ fr(2,j=>hds[i*2+j].visible=!s)
 hlr.children.map((p,j)=>{if(!hld[i]&&s&&n.distanceTo(p.position)<.13){hld[i]=p;p.t==1&&(p.t=0);hlo[i]=p.quaternion.clone().premultiply(w.quaternion.clone().invert())}})
 ///letgo
 // if(hld[i]&&!s){hld[i]===shk&&(shk.rotation.x=0);hld[i]=null}
-if(hld[i]&&!s)hld[i]=null
+if(hld[i]&&!s){let x=hld[i];setTimeout(_=>{x.parent===hlr&&!hld.some(_=>_===x)&&x.position.distanceTo(cm.position)>1&&x.position.set(.3,.8,-.3)},2e3);hld[i]=null;}
 ///drag
 hld[i]?.position.copy(n)
 hld[i]&&w&&hlo[i]&&hld[i].quaternion.copy(hlo[i]).premultiply(w.quaternion)
