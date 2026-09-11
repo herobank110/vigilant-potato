@@ -8,7 +8,7 @@ a=($,..._)=>new $(..._)
 fr=(n,f=_=>_)=>{_=[];for(let i=0;i<n;i++)_.push(f(i));return _}
 m=c=>a(Bo,{color:c})
 mm=m=>a(Ai,{map:m,transparent:true,side:Ri})
-mn=(c,m)=>a(Ai,{color:c,alphaMap:m,alphaTest:.5})
+mn=(c,m)=>a(Ai,{color:c,alphaMap:m,transparent:true,alphaTest:.5,opacity:.7})
 ldi=(u,f,_)=>(_=a(Image),_.src=u,_.onload=q=>f(_))
 ldic=(u,c)=>ldi(u,i=>(c.getContext("2d").drawImage(i,0,0)))
 cv=i=>(_=document.createElement('canvas'),_.width=_.height=i,_)
@@ -22,15 +22,17 @@ shaker=_=>(t=a(je),t.add(a(lt,a(Ms,.017,.02,.066),m(0xadadad)),...fr(3,i=>(_=a(l
 d=a(Uint8Array,await(await fetch("d")).arrayBuffer())
 dd=_=>{let i=0,j=1,f;setInterval(_=>{j--;while(!j){f=440*2**((d[i*2+1]-69)/12);zzfx(...[0.2*(1/M.pow(10,M.max(0,(f-1e3)/3e3))),0,f,.02,.12,.38,1,1.5,,,,,,,,,,.96,.02,,-1417]);i=(i+1)%(d.length/2);j=d[i*2]}},1e3/69)}
 //3js
-s=a($a),cm=a(vt),r=a(df)
+s=a($a),cm=a(vt),r=a(df,{antialias:true})
 r.setClearColor(0x79aacf);r.xr.enabled=true;r.shadowMap.enabled=true
 window.onclick=_=>{dd();navigator.xr.requestSession('immersive-vr',{requiredFeatures:["hand-tracking",'local-floor']}).then(_=>r.xr.setSession(_))}
 //interactive
-s.add(tre=tree(),dnt=donut(),shk=shaker())
+s.add(hlr=a(je),tre=tree())
+hlr.add(dnt=donut(),shk=shaker())
 tre.position.set(.5,.8,-.6)
 dnt.position.set(.5,1.32,-.36)
 shk.position.set(-.3,.85,-.3)
-hds=fr(4,_=>a(lt,a(Ls,.02),m(0))),hld=[],hlp=[dnt,shk],hlo=[]
+// hds=fr(4,_=>a(lt,a(Ls,.02),m(0))),hld=[],hlp=[dnt,shk],hlo=[]
+hds=fr(4,_=>a(lt,a(Ls,.02),m(0))),hld=[],hlo=[]
 s.add(...hds)
 //emoji
 txb=a(Wc,(txc=_=cv(100),_)),
@@ -70,7 +72,8 @@ let p=hds[i*2].position,q=hds[i*2+1].position,d=p.distanceTo(q),n=p.clone().lerp
 s=d<.024,w=j['wrist']
 fr(2,j=>hds[i*2+j].visible=!s)
 ///hold
-hlp.map((p,j)=>{if(!hld[i]&&s&&n.distanceTo(p.position)<.13){hld[i]=p;p.t==1&&(p.t=0);hlo[i]=p.quaternion.clone().premultiply(w.quaternion.clone().invert())}})
+// hlp.map((p,j)=>{if(!hld[i]&&s&&n.distanceTo(p.position)<.13){hld[i]=p;p.t==1&&(p.t=0);hlo[i]=p.quaternion.clone().premultiply(w.quaternion.clone().invert())}})
+hlr.children.map((p,j)=>{if(!hld[i]&&s&&n.distanceTo(p.position)<.13){hld[i]=p;p.t==1&&(p.t=0);hlo[i]=p.quaternion.clone().premultiply(w.quaternion.clone().invert())}})
 ///letgo
 if(hld[i]&&!s){hld[i]===shk&&(shk.rotation.x=0);hld[i]=null}
 ///drag
@@ -82,16 +85,19 @@ if(hld[i]&&w&&hlo[i])hld[i].quaternion.copy(hlo[i]).premultiply(w.quaternion)
 if(hldshk&&shk.position.y>dnt.position.y&&(_=dnt.position.clone(),_.y=shk.position.y,_.distanceTo(shk.position)<.05)){dnt.children[2].count+=dt*0.08}
 //throw
 // if(!dnt.t&&!hld.some(_=>_===dnt)&&dnt.position.y>.825){dnt.vel.y=M.min(.05,dnt.vel.y-dt*.0008);while(dnt.vel.length()>0.5)dnt.vel.multiplyScalar(.9);dnt.position.addScaledVector(dnt.vel,dt*.005)}
-if(!dnt.t&&!hld.some(_=>_===dnt)&&(dnt.position.y>.825||dnt.position.z<-.5)){dnt.vel.y=M.min(.42,dnt.vel.y-dt*.0008);while(dnt.vel.length()>0.8)dnt.vel.multiplyScalar(.9);dnt.position.addScaledVector(dnt.vel,dt*.005)}
+i=dnt.position.y>.82,j=dnt.position.z<-.5
+if(!dnt.t&&!hld.some(_=>_===dnt)&&(i||j)){dnt.vel.y=M.min(.42,dnt.vel.y-dt*.0008);while(dnt.vel.length()>0.8)dnt.vel.multiplyScalar(.9);dnt.position.addScaledVector(dnt.vel,dt*.005)}
+!i&&(dnt.position.y=.82,dnt.rotation.set(-PI/2,0,0))
 //splat
 if(dnt.position.z<-0.95&&!dnt.t){dnt.t=1;s.add(_=splat(ccc[2]));_.position.copy(dnt.position);_.position.z=++spi*1e-5-.975;_.rotateZ(PI*2*M.random())
-s.add(x=dnt.children[2])
+s.add(x=dnt.children[2],dnt)
 x.position.copy(_.position)
 x.rotation.set(0,0,0)
 x.scale.z=.2
 dnt.visible=false
-s.add(dnt=donut())
-dnt.position.set(.5,1.32,-.36)
+hlr.add(dnt=donut())
+// dnt.position.set(.5,1.32,-.36)
+dnt.position.set(.3,.8,-.3)
 }
 //emoji
 txo.position.copy(txp).y+=.01*(M.sin(t/400)**4)
@@ -107,7 +113,7 @@ r.render(s,cm)
 //test launch
 // dnt.position.set(0,1,-.3);dnt.vel=a(w,0,.3,-.6);setTimeout(()=>dnt.t=0,500)
 // launchvel: x[-.11,.11],y[.18,.41],_.6
-dnt.children[2].count=1000
+dnt.children[2].count=200
 dnt.position.set(-.3,1,-.3);dnt.vel=a(w,.11,.18,-.6);setTimeout(()=>dnt.t=0,500)
 window.shk=shk;window.mm=mm;window.Wc=Wc;window.cs=cs
 window.onkeydown=_=>{dd();navigator.xr.requestSession('immersive-vr',{requiredFeatures:["hand-tracking",'local-floor']}).then(_=>r.xr.setSession(_))}
