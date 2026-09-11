@@ -85,12 +85,10 @@ hlr.children.map(k=>{i=k.position.y>.82,j=k.position.z<-.5;if(!k.t&&k.vel&&!hld.
 if((_=dnt.position,_.z<-0.95&&_.x>-.55&&_.x<.05&&_.y>.86&&_.y<1.4)&&!dnt.t){dnt.t=1;s.add(_=splat(ccc[2]));_.position.copy(dnt.position);_.position.z=++spi*1e-5-.975;_.rotateZ(PI*2*M.random());s.add(x=dnt.children[2],dnt);x.position.copy(_.position);x.rotation.set(0,0,0);x.scale.z=.2;dnt.visible=false;hlr.add(dnt=donut());dnt.position.set(.34,1.15,-.35)}
 //emoji/tut
 unp.scale.setScalar(M.max(0,M.min(.99,1-(t/2e3)+1)))
-
-!tts[0]&&(tx(0x1F446),txp.copy(dnt.position),txp.y-=.1)
-tts[0]&&txp.set(0,1.2,-.5)
-txo.position.copy(txp).y+=.01*(M.sin(t/400)**4)
-txo.lookAt(cm.position)
-
+!tts[0]&&(tx(0x1F446),txp.copy(dnt.position),txp.y-=.11,txp.x+=.02)
+tts[0]&&(tx(0x1F447),txp.copy(shk.position),txp.y+=.07,txp.x+=.02)
+tts[1]&&(txp.set(0,0,-.5)) // TODO: ghost shaker over donut
+txo.position.copy(txp).y+=.01*(M.sin(t/400)**4);txo.lookAt(cm.position)
 //
 r.render(s,cm)
 });
