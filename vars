@@ -16,6 +16,7 @@ txb - emoji texture
 txc - emoji canvas
 txp - emoji position
 tts - tutorial states
+tth - tutorial bounce height
 tx - set emoji
 txo - emoji object
 uno - unicorn object
