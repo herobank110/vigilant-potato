@@ -22,9 +22,10 @@ shaker=_=>(t=a(je),t.add(tt=a(je)),t.rotateX(-PI/2),tt.position.z=.015,tt.rotate
 sfx=_=>zzfx(..._)
 d=a(Uint8Array,await(await fetch("d")).arrayBuffer())
 dd=_=>{let i=0,j=1,f;setInterval(_=>{j--;while(!j){f=440*2**((d[i*2+1]-69)/12);sfx([0.2*(1/M.pow(10,M.max(0,(f-1e3)/3e3))),0,f,.02,.12,.38,1,1.5,,,,,,,,,,.96,.02,,-1417]);i=(i+1)%(d.length/2);j=d[i*2]}},1e3/69)}
-ssk=[,.2,40,.2,,.4,,11,,,,,,199]
-str=[,,150,.05,,.05,,1.3,,,,,,3]
+ssk=[.03,.2,40,.2,,.4,,11,,,,,,199]
+str=[.7,,150,.05,,.05,,1.3,,,,,,3]
 ssp=[,,333,.04,.03,.07,1,.7,6.1,,244,.08,.25,,28,,,.9,.03,.5,-1442]
+shh=[,.15,200,.01,.03,.02,5,1.2,,,,,,1,5.2,.1,,.43,.02,,-1300]
 //3js
 s=a($a),cm=a(vt),r=a(df,{antialias:true})
 r.setClearColor(0x79aacf);r.xr.enabled=true;r.shadowMap.enabled=true
@@ -77,16 +78,16 @@ fr(2,j=>hds[i*2+j].visible=!s)
 ///hold
 hlr.children.map((p,j)=>{if(!hld[i]&&s&&n.distanceTo(p.position)<.08){hld[i]=p;p.t==1&&(p.t=0,tts[0]=1)||(tts[1]=1);hlo[i]=p.quaternion.clone().premultiply(w.quaternion.clone().invert())}})
 ///letgo/return
-if(hld[i]&&!s){let x=hld[i];setTimeout(_=>{x.parent===hlr&&!hld.some(_=>_===x)&&x.position.distanceTo(cm.position)>1&&x.position.set(0,.8,-.3)},2e3);hld[i]=null}
+if(hld[i]&&!s){let x=hld[i];x.vel.length()>.15&&sfx(str);setTimeout(_=>{x.parent===hlr&&!hld.some(_=>_===x)&&x.position.distanceTo(cm.position)>1&&x.position.set(0,.8,-.3)},2e3);hld[i]=null}
 ///drag
 hld[i]?.position.copy(n)
 hld[i]&&w&&hlo[i]&&hld[i].quaternion.copy(hlo[i]).premultiply(w.quaternion)
 //
 })
 //sprinkles
-if(hldshk&&shk.position.y>dnt.position.y&&(_=dnt.position.clone(),_.y=shk.position.y,_.distanceTo(shk.position)<.05)){dnt.children[2].count+=dt*0.08;dnt.children[2].count>60&&(tts[2]=1)}
+if(hldshk&&shk.position.y>dnt.position.y&&(_=dnt.position.clone(),_.y=shk.position.y,_.distanceTo(shk.position)<.05)){dnt.children[2].count+=dt*0.08;dnt.children[2].count>60&&(tts[2]=1);sfx(ssk)}
 //throw/drop
-hlr.children.map(k=>{i=k.position.y>.82,j=k.position.z<-.5;if(!k.t&&k.vel&&!hld.some(_=>_===k)&&(i||j)){k.vel.y=M.min(.42,k.vel.y-dt*.0008);while(k.vel.length()>0.8)k.vel.multiplyScalar(.9);k.position.addScaledVector(k.vel,dt*.005)};!i&&(k.position.y=.816,k.rotation.set(-PI/2,0,0))})
+hlr.children.map(k=>{i=k.position.y>.82,j=k.position.z<-.5;if(!k.t&&k.vel&&!hld.some(_=>_===k)&&(i||j)){k.vel.y=M.min(.42,k.vel.y-dt*.0008);while(k.vel.length()>0.8)k.vel.multiplyScalar(.9);k.position.addScaledVector(k.vel,dt*.005)};!i&&k.position.y!=.816&&(k.position.y=.816,k.rotation.set(-PI/2,0,0),sfx(shh))})
 //splat/spawn
 if((_=dnt.position,_.z<-0.95&&_.x>-.55&&_.x<.05&&_.y>.86&&_.y<1.4)&&!dnt.t){dnt.t=1;s.add(_=splat(ccc[2]));_.position.copy(dnt.position);_.position.z=++spi*1e-5-.975;_.rotateZ(PI*2*M.random());s.add(x=dnt.children[2],dnt);x.position.copy(_.position);x.rotation.set(0,0,0);x.scale.z=.2;dnt.visible=false;hlr.add(dnt=donut());dnt.position.set(.34,1.15,-.35);sfx(ssp);tts[3]=1;setTimeout(_=>(tts[4]=1),4e3)}
 //tutorial
