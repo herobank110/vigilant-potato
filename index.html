@@ -18,9 +18,13 @@ spg=a(Ms,.00056,.00056,.0061,5),
 tree=_=>{let t=a(je),h=.9,mt=m(0x554944),x=a(lt,a(Ms,.01,.02,h),mt);x.position.y+=h/2;t.add(x);fr(20,i=>{let r=a(je);r.position.y=M.sin((i/20)*934.485)/5+.5;r.rotateY((i/20)*PI*2);let l=(1-r.position.y)*.7,y=a(lt,a(Ms,.01,.006,l),mt);y.rotateX(PI/-1.4+l/5);y.position.z+=l/2.5;r.add(y);t.add(r);t.add(q=a(lt,a(Ls,.1+(1-i/20)*.14),a(Ai,{color:0x7a843b,transparent:true,opacity:.91,depthWrite:false})));q.scale.y=.6;q.position.set(M.sign(M.sin(((i+1)/20)*48.74))*.16*(1-i/20+.2),.37+i/20*.7,M.sign(M.sin(((i+1)/20)*34.94))*.16*(1-i/20+.1))});return t}
 donut=_=>{let t=a(je),g=a(Ro,.03,.015),x=a(lt,g,m(0xef6eab)),y=a(lt,g,m(0xbf996d));y.castShadow=true;let n=1000,d=a(je),c=a(de),z=a(no,spg,a(Ai),n);fr(n,i=>{let j=i*9345.934,y=i*3484.984,q=M.sin(j)*.5+.5,r=.02+(q*.02);d.position.set(r*M.cos(y),r*M.sin(y),.011+(.0056*M.sin(PI*q)));d.rotateZ(j);d.updateMatrix();z.setMatrixAt(i, d.matrix);c.set(ccc[M.floor((j%390.382)%5)]);z.setColorAt(i,c)});y.position.z-=.001;t.add(x,y,z);z.count=0;z.frustumCulled=false;t.t=1;return t}
 shaker=_=>(t=a(je),t.add(tt=a(je)),t.rotateX(-PI/2),tt.position.z=.015,tt.rotateX(PI/2),tt.add(a(lt,a(Ms,.017,.02,.066),m(0xadadad)),...fr(3,i=>(_=a(lt,spg,m(ccc[i])),_.position.set([.013,.017,.015][i],.015,[.013,.007,.01][i]),_))),t)
-//music
+//music/sfx
+sfx=_=>zzfx(..._)
 d=a(Uint8Array,await(await fetch("d")).arrayBuffer())
-dd=_=>{let i=0,j=1,f;setInterval(_=>{j--;while(!j){f=440*2**((d[i*2+1]-69)/12);zzfx(...[0.2*(1/M.pow(10,M.max(0,(f-1e3)/3e3))),0,f,.02,.12,.38,1,1.5,,,,,,,,,,.96,.02,,-1417]);i=(i+1)%(d.length/2);j=d[i*2]}},1e3/69)}
+dd=_=>{let i=0,j=1,f;setInterval(_=>{j--;while(!j){f=440*2**((d[i*2+1]-69)/12);sfx([0.2*(1/M.pow(10,M.max(0,(f-1e3)/3e3))),0,f,.02,.12,.38,1,1.5,,,,,,,,,,.96,.02,,-1417]);i=(i+1)%(d.length/2);j=d[i*2]}},1e3/69)}
+ssk=[,.2,40,.2,,.4,,11,,,,,,199]
+str=[,,150,.05,,.05,,1.3,,,,,,3]
+ssp=[,,333,.04,.03,.07,1,.7,6.1,,244,.08,.25,,28,,,.9,.03,.5,-1442]
 //3js
 s=a($a),cm=a(vt),r=a(df,{antialias:true})
 r.setClearColor(0x79aacf);r.xr.enabled=true;r.shadowMap.enabled=true
@@ -84,7 +88,7 @@ if(hldshk&&shk.position.y>dnt.position.y&&(_=dnt.position.clone(),_.y=shk.positi
 //throw/drop
 hlr.children.map(k=>{i=k.position.y>.82,j=k.position.z<-.5;if(!k.t&&k.vel&&!hld.some(_=>_===k)&&(i||j)){k.vel.y=M.min(.42,k.vel.y-dt*.0008);while(k.vel.length()>0.8)k.vel.multiplyScalar(.9);k.position.addScaledVector(k.vel,dt*.005)};!i&&(k.position.y=.816,k.rotation.set(-PI/2,0,0))})
 //splat/spawn
-if((_=dnt.position,_.z<-0.95&&_.x>-.55&&_.x<.05&&_.y>.86&&_.y<1.4)&&!dnt.t){dnt.t=1;s.add(_=splat(ccc[2]));_.position.copy(dnt.position);_.position.z=++spi*1e-5-.975;_.rotateZ(PI*2*M.random());s.add(x=dnt.children[2],dnt);x.position.copy(_.position);x.rotation.set(0,0,0);x.scale.z=.2;dnt.visible=false;hlr.add(dnt=donut());dnt.position.set(.34,1.15,-.35);tts[3]=1;setTimeout(_=>(tts[4]=1),4e3)}
+if((_=dnt.position,_.z<-0.95&&_.x>-.55&&_.x<.05&&_.y>.86&&_.y<1.4)&&!dnt.t){dnt.t=1;s.add(_=splat(ccc[2]));_.position.copy(dnt.position);_.position.z=++spi*1e-5-.975;_.rotateZ(PI*2*M.random());s.add(x=dnt.children[2],dnt);x.position.copy(_.position);x.rotation.set(0,0,0);x.scale.z=.2;dnt.visible=false;hlr.add(dnt=donut());dnt.position.set(.34,1.15,-.35);sfx(ssp);tts[3]=1;setTimeout(_=>(tts[4]=1),4e3)}
 //tutorial
 unp.scale.setScalar(M.max(0,M.min(.99,1-(t/2e3)+1)))
 t>5e3&&(tx(0x1F446),txp.copy(dnt.position),txp.y-=.11,txp.x+=.02)

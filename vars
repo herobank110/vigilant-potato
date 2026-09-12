@@ -3,6 +3,10 @@ ldic - load image to canvas
 cv - new canvas
 ccc - sprinkle colors
 spg - sprinkle geometry
+sfx - play sound fx
+ssk - sfx for shake
+str - sfx for throw
+ssp - sfx for splat
 s - scene
 cm - camera
 r - renderer
