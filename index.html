@@ -76,7 +76,8 @@ let p=hds[i*2].position,q=hds[i*2+1].position,d=p.distanceTo(q),n=p.clone().lerp
 s=d<.024,w=j['wrist']
 fr(2,j=>hds[i*2+j].visible=!s)
 ///hold
-hlr.children.map((p,j)=>{if(!hld[i]&&s&&n.distanceTo(p.position)<.08){hld[i]=p;p.t==1&&(p.t=0,tts[0]=1)||(tts[1]=1);hlo[i]=p.quaternion.clone().premultiply(w.quaternion.clone().invert())}})
+hlr.children.map((p,j)=>{if(!hld[i]&&s&&n.distanceTo(p.position)<.08){hld[i]=p;p.t==1&&(p.t=0,tts[0]=1)||(tts[0]&&(tts[1]=1));hlo[i]=p.quaternion.clone().premultiply(w.quaternion.clone().invert())}})
+tts[0]&&!tts[2]&&(tts[1]=hldshk)
 ///letgo/return
 if(hld[i]&&!s){let x=hld[i];x.vel.length()>.15&&sfx(str);setTimeout(_=>{x.parent===hlr&&!hld.some(_=>_===x)&&x.position.distanceTo(cm.position)>1&&x.position.set(0,.8,-.3)},2e3);hld[i]=null}
 ///drag
