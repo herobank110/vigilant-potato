@@ -87,7 +87,7 @@ hld[i]&&w&&hlo[i]&&hld[i].quaternion.copy(hlo[i]).premultiply(w.quaternion)
 //sprinkles
 if(hldshk&&shk.position.y>dnt.position.y&&(_=dnt.position.clone(),_.y=shk.position.y,_.distanceTo(shk.position)<.05)){dnt.children[2].count+=dt*0.08;dnt.children[2].count>60&&(tts[2]=1);sfx(ssk)}
 //throw/drop
-hlr.children.map(k=>{i=k.position.y>.82,j=k.position.z<-.5;if(!k.t&&k.vel&&!hld.some(_=>_===k)&&(i||j)){k.vel.y=M.min(.42,k.vel.y-dt*.0008);while(k.vel.length()>0.8)k.vel.multiplyScalar(.9);k.position.addScaledVector(k.vel,dt*.005)};!i&&k.position.y!=.816&&(k.position.y=.816,k.rotation.set(-PI/2,0,0),sfx(shh))})
+hlr.children.map(k=>{i=k.position.y>.82,j=k.position.z<-.5;if(!k.t&&k.vel&&!(ish=hld.some(_=>_===k))&&(i||j)){k.vel.y=M.min(.42,k.vel.y-dt*.0008);while(k.vel.length()>0.8)k.vel.multiplyScalar(.9);k.position.addScaledVector(k.vel,dt*.005)};!i&&k.position.y!=.816&&(k.position.y=.816,k.rotation.set(-PI/2,0,0),k.lp.distanceTo(k.position)<.6&&!ish&&sfx(shh))})
 //splat/spawn
 if((_=dnt.position,_.z<-0.95&&_.x>-.55&&_.x<.05&&_.y>.86&&_.y<1.4)&&!dnt.t){dnt.t=1;s.add(_=splat(ccc[2]));_.position.copy(dnt.position);_.position.z=++spi*1e-5-.975;_.rotateZ(PI*2*M.random());s.add(x=dnt.children[2],dnt);x.position.copy(_.position);x.rotation.set(0,0,0);x.scale.z=.2;dnt.visible=false;hlr.add(dnt=donut());dnt.position.set(.34,1.15,-.35);sfx(ssp);tts[3]=1;setTimeout(_=>(tts[4]=1),4e3)}
 //tutorial
