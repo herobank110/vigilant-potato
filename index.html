@@ -6,7 +6,7 @@ eval((await (await fetch("three.js")).text()).substr(0,716570))
 M=Math,PI=M.PI
 a=($,..._)=>new $(..._)
 fr=(n,f=_=>_)=>{_=[];for(let i=0;i<n;i++)_.push(f(i));return _}
-m=c=>a(Bo,{color:c})
+m=c=>a(Bo,{color:c,side:Ri})
 mm=m=>a(Bo,{map:m,transparent:true,side:Ri})
 mn=(c,m)=>a(Ai,{color:c,alphaMap:m,alphaTest:.5})
 ldi=(u,f,_)=>(_=a(Image),_.src=u,_.onload=q=>f(_))
@@ -15,7 +15,7 @@ cv=i=>(_=document.createElement('canvas'),_.width=_.height=i,_)
 //modeling
 ccc=[0xffde39,0x0884c0,0xdf1482,0xff9b32,0x1c894c]
 spg=a(Ms,.00056,.00056,.0061,5),
-tree=_=>{let t=a(je),h=.9,mt=m(0x554944),x=a(lt,a(Ms,.01,.02,h),mt);x.position.y+=h/2;t.add(x);fr(20,i=>{let r=a(je);r.position.y=M.sin((i/20)*934.485)/5+.5;r.rotateY((i/20)*PI*2);let l=(1-r.position.y)*.7,y=a(lt,a(Ms,.01,.006,l),mt);y.rotateX(PI/-1.4+l/5);y.position.z+=l/2.5;r.add(y);t.add(r);t.add(q=a(lt,a(Ls,.1+(1-i/20)*.14),a(Ai,{color:0x7a843b,transparent:true,opacity:.91,depthWrite:false})));q.scale.y=.6;q.position.set(M.sign(M.sin(((i+1)/20)*48.74))*.16*(1-i/20+.2),.37+i/20*.7,M.sign(M.sin(((i+1)/20)*34.94))*.16*(1-i/20+.1))});return t}
+tree=_=>{let t=a(je),h=.9,mt=m(0x554944),mc=m(0xfe8d59),x=a(lt,a(Ms,.01,.02,h),mt);x.position.y+=h/2;t.add(x);t.add((x=a(lt,a(Ms,.09,.07,.24,32,1,true),mc)),(x=a(lt,a(Ms,.10,.096,.04,32,1,true),mc),x.position.y=.13,x),(x=a(lt,a(Ms,.07,.07,.011),m(0x140600)),x.position.y=.11,x));fr(20,i=>{let r=a(je);r.position.y=M.sin((i/20)*934.485)/5+.5;r.rotateY((i/20)*PI*2);let l=(1-r.position.y)*.7,y=a(lt,a(Ms,.01,.006,l),mt);y.rotateX(PI/-1.4+l/5);y.position.z+=l/2.5;r.add(y);t.add(r);t.add(q=a(lt,a(Ls,.1+(1-i/20)*.14),a(Ai,{color:0x7a843b,transparent:true,opacity:.91,depthWrite:false})));q.scale.y=.6;q.position.set(M.sign(M.sin(((i+1)/20)*48.74))*.16*(1-i/20+.2),.37+i/20*.7,M.sign(M.sin(((i+1)/20)*34.94))*.16*(1-i/20+.1))});return t}
 donut=_=>{let t=a(je),g=a(Ro,.03,.015),x=a(lt,g,m(0xef6eab)),y=a(lt,g,m(0xbf996d));y.castShadow=true;let n=1000,d=a(je),c=a(de),z=a(no,spg,a(Ai),n);fr(n,i=>{let j=i*9345.934,y=i*3484.984,q=M.sin(j)*.5+.5,r=.02+(q*.02);d.position.set(r*M.cos(y),r*M.sin(y),.011+(.0056*M.sin(PI*q)));d.rotateZ(j);d.updateMatrix();z.setMatrixAt(i, d.matrix);c.set(ccc[M.floor((j%390.382)%5)]);z.setColorAt(i,c)});y.position.z-=.001;t.add(x,y,z);z.count=0;z.frustumCulled=false;t.t=1;return t}
 shaker=_=>(t=a(je),t.add(tt=a(je)),t.rotateX(-PI/2),tt.position.z=.015,tt.rotateX(PI/2),tt.add(a(lt,a(Ms,.017,.02,.066),m(0xadadad)),...fr(3,i=>(_=a(lt,spg,m(ccc[i])),_.position.set([.013,.017,.015][i],.015,[.013,.007,.01][i]),_))),t)
 //music/sfx
