@@ -24,6 +24,7 @@ unp - unicorn cover
 spi - splat index
 spc - splat canvas
 lst - last time
+cst - click start time
 t - time
 dt - delta time
 hldshk - held shaker

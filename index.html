@@ -24,7 +24,7 @@ dd=_=>{let i=0,j=1,f;setInterval(_=>{j--;while(!j){f=440*2**((d[i*2+1]-69)/12);z
 //3js
 s=a($a),cm=a(vt),r=a(df,{antialias:true})
 r.setClearColor(0x79aacf);r.xr.enabled=true;r.shadowMap.enabled=true
-window.onclick=_=>{dd();navigator.xr.requestSession('immersive-vr',{requiredFeatures:["hand-tracking",'local-floor']}).then(_=>r.xr.setSession(_))}
+window.onclick=_=>{cst=0;dd();navigator.xr.requestSession('immersive-vr',{requiredFeatures:["hand-tracking",'local-floor']}).then(_=>r.xr.setSession(_));window.onclick=null}
 //interactive
 s.add(hlr=a(je),tre=tree())
 hlr.add(dnt=donut(),shk=shaker())
@@ -52,10 +52,13 @@ spi=0,ldic('e.svg',spc=cv(999))
 splat=x=>a(lt,a(Pr,.18,.18),mn(x,a(Wc,spc)))
 
 //mainloop
-lst=0
+lst=0,cst=1e9
 r.setAnimationLoop(t=>{
 //framevars
 dt=t-lst,lst=t
+!cst&&(cst=t)
+t-=cst
+console.log(t)
 vel=o=>(!o.lp&&(o.vel=a(w),o.lp=a(w)),o.vel.copy(o.position).sub(o.lp).divideScalar(1/dt),o.lp.copy(o.position),o.vel)
 hld.filter(_=>_).map(vel)
 hldshk=hld.find(_=>_===shk)
@@ -106,5 +109,5 @@ r.render(s,cm)
 // dnt.position.set(-.3,1,-.3);dnt.vel=a(w,.11,.18,-.6);setTimeout(()=>dnt.t=0,500)
 // dnt.position.set(.5,1.32,-.36)
 window.shk=shk;window.mm=mm;window.Wc=Wc;window.cs=cs
-window.onkeydown=_=>{dd();navigator.xr.requestSession('immersive-vr',{requiredFeatures:["hand-tracking",'local-floor']}).then(_=>r.xr.setSession(_))}
+window.onkeydown=_=>{cst=0;dd();navigator.xr.requestSession('immersive-vr',{requiredFeatures:["hand-tracking",'local-floor']}).then(_=>r.xr.setSession(_));window.onclick=null}
 })()</script><a>Click to start</a>
